@@ -1,1 +1,8 @@
 /target/
+
+# Ignore IntelliJ IDEA files
+.idea/
+
+# Ignore macOS system files
+.DS_Store
+
