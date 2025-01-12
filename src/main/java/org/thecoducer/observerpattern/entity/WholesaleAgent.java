@@ -7,7 +7,7 @@ import org.thecoducer.observerpattern.util.NotifierUtil;
 
 @Data
 @Builder
-public class Customer implements StockUpdateSubscriber {
+public class WholesaleAgent implements StockUpdateSubscriber {
   private String name;
   private String emailId;
   private String phoneNumber;

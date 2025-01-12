@@ -3,13 +3,13 @@ package org.thecoducer.observerpattern.test;
 import org.junit.jupiter.api.Test;
 import org.thecoducer.observerpattern.entity.Customer;
 import org.thecoducer.observerpattern.entity.Item;
+import org.thecoducer.observerpattern.entity.WholesaleAgent;
 import org.thecoducer.observerpattern.event.StockEvent;
 import org.thecoducer.observerpattern.eventpublisher.StockUpdatePublisherImpl;
-import org.thecoducer.observerpattern.eventsubscriber.StockUpdateSubscriber;
 
 public class StockUpdateNotificationTest {
 
-  private StockUpdatePublisherImpl stockPublisherImpl = new StockUpdatePublisherImpl();
+  private final StockUpdatePublisherImpl stockPublisherImpl = new StockUpdatePublisherImpl();
 
   @Test
   public void testStockUpdatesSend() {
@@ -23,13 +23,20 @@ public class StockUpdateNotificationTest {
         .emailId("pamela@gmail.com")
         .phoneNumber("9856678990")
         .build();
+    WholesaleAgent wholesaleAgent = WholesaleAgent.builder()
+        .name("Saumya")
+        .emailId("saumya@gmail.com")
+        .phoneNumber("879042556")
+        .build();
+
     stockPublisherImpl.subscribe(StockEvent.OUT_OF_STOCK_ITEM_AVAILABLE, customerOne);
     stockPublisherImpl.subscribe(StockEvent.ITEM_SOON_TO_GO_OUT_OF_STOCK, customerTwo);
+    stockPublisherImpl.subscribe(StockEvent.OUT_OF_STOCK_ITEM_AVAILABLE, wholesaleAgent);
 
-    Item item = Item.builder().name("Sofa").quantity(3).build();
-    stockPublisherImpl.updateStock(item);
+    Item itemOne = Item.builder().id(1).name("Sofa").quantity(3).build();
+    stockPublisherImpl.updateStock(itemOne);
 
-    item.setQuantity(2);
-    stockPublisherImpl.updateStock(item);
+    Item itemTwo = Item.builder().id(1).name("Sofa").quantity(1).build();
+    stockPublisherImpl.updateStock(itemTwo);
   }
 }
