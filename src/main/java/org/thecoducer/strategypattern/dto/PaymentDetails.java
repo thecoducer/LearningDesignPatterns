@@ -1,6 +1,6 @@
 package org.thecoducer.strategypattern.dto;
 
-import org.thecoducer.strategypattern.entities.PaymentMode;
+import org.thecoducer.strategypattern.entity.PaymentMode;
 
 public class PaymentDetails {
   private PaymentMode paymentMode;

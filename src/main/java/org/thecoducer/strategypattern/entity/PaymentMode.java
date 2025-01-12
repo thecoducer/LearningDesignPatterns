@@ -1,4 +1,4 @@
-package org.thecoducer.strategypattern.entities;
+package org.thecoducer.strategypattern.entity;
 
 import org.thecoducer.strategypattern.dto.PaymentDetails;
 import org.thecoducer.strategypattern.strategy.PayStrategy;
