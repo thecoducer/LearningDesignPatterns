@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.thecoducer.observerpattern.entity.Item;
 import org.thecoducer.observerpattern.event.Event;
 import org.thecoducer.observerpattern.event.StockEvent;
-import org.thecoducer.observerpattern.eventsubscriber.StockUpdateSubscriber;
+import org.thecoducer.observerpattern.eventsubscriber.EventSubscriber;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,26 +13,26 @@ import java.util.Map;
 
 @Slf4j
 public class StockUpdatePublisherImpl implements StockUpdatePublisher {
-  private final Map<Event, List<StockUpdateSubscriber>> eventSubscriberMap = new HashMap<>();
+  private final Map<Event, List<EventSubscriber>> eventSubscriberMap = new HashMap<>();
   private final Map<Integer, Item> itemMap = new HashMap<>();
 
   @Override
-  public void subscribe(Event event, StockUpdateSubscriber stockUpdateSubscriber) {
-    eventSubscriberMap.computeIfAbsent(event, v -> new ArrayList<>()).add(stockUpdateSubscriber);
+  public void subscribe(Event event, EventSubscriber eventSubscriber) {
+    eventSubscriberMap.computeIfAbsent(event, v -> new ArrayList<>()).add(eventSubscriber);
   }
 
   @Override
-  public void unsubscribe(Event event, StockUpdateSubscriber stockUpdateSubscriber) {
+  public void unsubscribe(Event event, EventSubscriber eventSubscriber) {
     eventSubscriberMap.computeIfPresent(event, (key, eventSubscribers) -> {
-      eventSubscribers.remove(stockUpdateSubscriber);
+      eventSubscribers.remove(eventSubscriber);
       return eventSubscribers.isEmpty() ? null : eventSubscribers;
     });
   }
 
   @Override
   public void notify(Event event) {
-    List<StockUpdateSubscriber> subscribers = eventSubscriberMap.get(event);
-    subscribers.forEach(StockUpdateSubscriber::update);
+    List<EventSubscriber> subscribers = eventSubscriberMap.get(event);
+    subscribers.forEach(EventSubscriber::update);
   }
 
   public void updateStock(Item item) {

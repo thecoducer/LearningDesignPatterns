@@ -2,12 +2,12 @@ package org.thecoducer.observerpattern.entity;
 
 import lombok.Builder;
 import lombok.Data;
-import org.thecoducer.observerpattern.eventsubscriber.StockUpdateSubscriber;
+import org.thecoducer.observerpattern.eventsubscriber.EventSubscriber;
 import org.thecoducer.observerpattern.util.NotifierUtil;
 
 @Data
 @Builder
-public class Customer implements StockUpdateSubscriber {
+public class Customer implements EventSubscriber {
   private String name;
   private String emailId;
   private String phoneNumber;

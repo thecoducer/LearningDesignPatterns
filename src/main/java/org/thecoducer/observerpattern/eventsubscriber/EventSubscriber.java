@@ -1,6 +1,6 @@
 package org.thecoducer.observerpattern.eventsubscriber;
 
 
-public interface StockUpdateSubscriber {
+public interface EventSubscriber {
   void update();
 }
