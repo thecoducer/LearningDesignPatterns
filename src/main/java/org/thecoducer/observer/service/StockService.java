@@ -19,7 +19,7 @@ public class StockService {
     Item item = FakeDB.getItem(itemId);
 
     log.debug("Stock updated. Item quantity {} to {}.", item.getQuantity(), newQuantity);
-    if (isOutOfStockItemAvailable(item, newQuantity)) {
+    if (isOutOfStockItemAvailable(item.getQuantity(), newQuantity)) {
       stockUpdatePublisher.notify(StockEvent.OUT_OF_STOCK_ITEM_AVAILABLE);
     } else if (isItemSoonToGoOutOfStock(newQuantity)) {
       stockUpdatePublisher.notify(StockEvent.ITEM_SOON_TO_GO_OUT_OF_STOCK);
@@ -27,8 +27,8 @@ public class StockService {
     FakeDB.addOrUpdateItem(item);
   }
 
-  private boolean isOutOfStockItemAvailable(Item item, int newQuantity) {
-    return item.getQuantity() == 0 && newQuantity != 0;
+  private boolean isOutOfStockItemAvailable(int currentQuantity, int newQuantity) {
+    return currentQuantity == 0 && newQuantity != 0;
   }
 
   private boolean isItemSoonToGoOutOfStock(int newQuantity) {
