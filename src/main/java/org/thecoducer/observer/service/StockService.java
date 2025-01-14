@@ -1,12 +1,12 @@
 package org.thecoducer.observer.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.thecoducer.observer.config.StockUpdateConfig;
 import org.thecoducer.observer.entity.Item;
 import org.thecoducer.observer.event.StockEvent;
 import org.thecoducer.observer.eventpublisher.StockUpdatePublisher;
-import org.thecoducer.observer.repository.DB;
+import org.thecoducer.observer.repository.FakeDB;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
@@ -16,20 +16,33 @@ public class StockService {
 
   public StockService() {
     stockUpdatePublisher = new StockUpdatePublisher();
-    itemMap = DB.getItemMap();
+    itemMap = FakeDB.getItemMap();
   }
 
   public void updateStock(Item item) {
-    int currentQuantity = itemMap.getOrDefault(item.getId(), Item.builder().quantity(0).build()).getQuantity();
-    int quantity = item.getQuantity();
-
-    log.debug("Stock updated. Item quantity {} to {}.", currentQuantity, quantity);
-    if (currentQuantity == 0 && quantity != 0) {
+    log.debug("Stock updated. Item quantity {} to {}.", getCurrentItemQuantity(item.getId()), item.getQuantity());
+    if (isOutOfStockItemAvailable(item)) {
       stockUpdatePublisher.notify(StockEvent.OUT_OF_STOCK_ITEM_AVAILABLE);
-    } else if (currentQuantity <= 2 || quantity <= 2) {
+    } else if (isItemSoonToGoOutOfStock(item)) {
       stockUpdatePublisher.notify(StockEvent.ITEM_SOON_TO_GO_OUT_OF_STOCK);
     }
+    addOrUpdateItem(item);
+  }
 
+  private boolean isOutOfStockItemAvailable(Item item) {
+    int currentQuantity = getCurrentItemQuantity(item.getId());
+    return currentQuantity == 0 && item.getQuantity() != 0;
+  }
+
+  private boolean isItemSoonToGoOutOfStock(Item item) {
+    return item.getQuantity() <= StockUpdateConfig.ITEM_SOON_TO_GO_OUT_OF_STOCK_THRESHOLD;
+  }
+
+  private void addOrUpdateItem(Item item) {
     itemMap.put(item.getId(), item);
+  }
+
+  private int getCurrentItemQuantity(int itemId) {
+    return itemMap.getOrDefault(itemId, Item.builder().quantity(0).build()).getQuantity();
   }
 }

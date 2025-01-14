@@ -3,7 +3,7 @@ package org.thecoducer.observer.eventpublisher;
 import lombok.extern.slf4j.Slf4j;
 import org.thecoducer.observer.event.Event;
 import org.thecoducer.observer.eventsubscriber.EventSubscriber;
-import org.thecoducer.observer.repository.DB;
+import org.thecoducer.observer.repository.FakeDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Slf4j
 public class StockUpdatePublisher implements EventPublisher {
-  private final Map<Event, List<EventSubscriber>> eventSubscriberMap = DB.getEventSubscriberMap();
+  private final Map<Event, List<EventSubscriber>> eventSubscriberMap = FakeDB.getEventSubscriberMap();
 
   @Override
   public void subscribe(Event event, EventSubscriber eventSubscriber) {
