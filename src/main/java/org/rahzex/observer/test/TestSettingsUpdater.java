@@ -1,6 +1,5 @@
 package org.rahzex.observer.test;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.rahzex.observer.entity.FontSettings;
@@ -11,6 +10,8 @@ import org.rahzex.observer.observers.Header;
 import org.rahzex.observer.observers.TextPanel;
 import org.rahzex.observer.service.FontService;
 import org.rahzex.observer.service.ThemeService;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestSettingsUpdater {
     private FontService fontService;
@@ -39,10 +40,10 @@ public class TestSettingsUpdater {
         updatePublisher.unsubscribe(SettingsEvent.THEME_UPDATED, header);
         themeService.update(ThemeSettings.builder().primaryColor("White").accentColor("Cream").build());
 
-        Assertions.assertEquals(20, fontService.getFontSettings().getFontSize());
-        Assertions.assertEquals("ST11", fontService.getFontSettings().getFontStyle());
+        assertEquals(20, fontService.getFontSettings().getFontSize());
+        assertEquals("ST11", fontService.getFontSettings().getFontStyle());
 
-        Assertions.assertEquals("White", themeService.getThemeSettings().getPrimaryColor());
-        Assertions.assertEquals("Cream", themeService.getThemeSettings().getAccentColor());
+        assertEquals("White", themeService.getThemeSettings().getPrimaryColor());
+        assertEquals("Cream", themeService.getThemeSettings().getAccentColor());
     }
 }
