@@ -1,11 +1,16 @@
 package org.thecoducer.observer.test;
 
+import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.Test;
 import org.thecoducer.observer.entity.Customer;
 import org.thecoducer.observer.entity.Item;
 import org.thecoducer.observer.entity.WholesaleAgent;
 import org.thecoducer.observer.event.StockEvent;
 import org.thecoducer.observer.eventpublisher.StockUpdatePublisher;
+import org.thecoducer.observer.service.EmailNotifierService;
+import org.thecoducer.observer.service.SmsNotifierService;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StockUpdateNotificationTest {
 
@@ -13,6 +18,9 @@ public class StockUpdateNotificationTest {
 
   @Test
   public void testStockUpdatesSend() {
+    LogCaptor emailNotifierLogCaptor = LogCaptor.forClass(EmailNotifierService.class);
+    LogCaptor smsNotifierLogCaptor = LogCaptor.forClass(SmsNotifierService.class);
+
     Customer rahul = Customer.builder()
         .name("Rahul")
         .emailId("rahul@gmail.com")
@@ -46,5 +54,12 @@ public class StockUpdateNotificationTest {
 
     Item itemTwo = Item.builder().id(1).name("Sofa").quantity(1).build();
     stockUpdatePublisher.updateStock(itemTwo);
+
+    assertEquals("Mail sent to rahul@gmail.com.", emailNotifierLogCaptor.getInfoLogs().getFirst());
+    assertEquals("SMS sent to 9870098990.", smsNotifierLogCaptor.getInfoLogs().getFirst());
+    assertEquals("Mail sent to saumya@gmail.com.", emailNotifierLogCaptor.getInfoLogs().get(1));
+    assertEquals("SMS sent to 879042556.", smsNotifierLogCaptor.getInfoLogs().get(1));
+    assertEquals("Mail sent to pamela@gmail.com.", emailNotifierLogCaptor.getInfoLogs().get(2));
+    assertEquals("SMS sent to 9856678990.", smsNotifierLogCaptor.getInfoLogs().get(2));
   }
 }
