@@ -26,7 +26,7 @@ public class StockUpdateNotificationTest {
     WholesaleAgent saumya = WholesaleAgent.builder()
         .name("Saumya")
         .emailId("saumya@gmail.com")
-        .phoneNumber("879042556")
+        .phoneNumber("879042559")
         .build();
     WholesaleAgent anwesha = WholesaleAgent.builder()
         .name("Anwesha")
