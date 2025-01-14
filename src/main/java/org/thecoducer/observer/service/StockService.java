@@ -7,42 +7,31 @@ import org.thecoducer.observer.event.StockEvent;
 import org.thecoducer.observer.eventpublisher.StockUpdatePublisher;
 import org.thecoducer.observer.repository.FakeDB;
 
-import java.util.Map;
-
 @Slf4j
 public class StockService {
-  private final Map<Integer, Item> itemMap;
   private final StockUpdatePublisher stockUpdatePublisher;
 
   public StockService() {
     stockUpdatePublisher = new StockUpdatePublisher();
-    itemMap = FakeDB.getItemMap();
   }
 
-  public void updateStock(Item item) {
-    log.debug("Stock updated. Item quantity {} to {}.", getCurrentItemQuantity(item.getId()), item.getQuantity());
-    if (isOutOfStockItemAvailable(item)) {
+  public void updateStock(int itemId, int newQuantity) {
+    Item item = FakeDB.getItem(itemId);
+
+    log.debug("Stock updated. Item quantity {} to {}.", item.getQuantity(), newQuantity);
+    if (isOutOfStockItemAvailable(item, newQuantity)) {
       stockUpdatePublisher.notify(StockEvent.OUT_OF_STOCK_ITEM_AVAILABLE);
-    } else if (isItemSoonToGoOutOfStock(item)) {
+    } else if (isItemSoonToGoOutOfStock(newQuantity)) {
       stockUpdatePublisher.notify(StockEvent.ITEM_SOON_TO_GO_OUT_OF_STOCK);
     }
-    addOrUpdateItem(item);
+    FakeDB.addOrUpdateItem(item);
   }
 
-  private boolean isOutOfStockItemAvailable(Item item) {
-    int currentQuantity = getCurrentItemQuantity(item.getId());
-    return currentQuantity == 0 && item.getQuantity() != 0;
+  private boolean isOutOfStockItemAvailable(Item item, int newQuantity) {
+    return item.getQuantity() == 0 && newQuantity != 0;
   }
 
-  private boolean isItemSoonToGoOutOfStock(Item item) {
-    return item.getQuantity() <= StockUpdateConfig.ITEM_SOON_TO_GO_OUT_OF_STOCK_THRESHOLD;
-  }
-
-  private void addOrUpdateItem(Item item) {
-    itemMap.put(item.getId(), item);
-  }
-
-  private int getCurrentItemQuantity(int itemId) {
-    return itemMap.getOrDefault(itemId, Item.builder().quantity(0).build()).getQuantity();
+  private boolean isItemSoonToGoOutOfStock(int newQuantity) {
+    return newQuantity <= StockUpdateConfig.ITEM_SOON_TO_GO_OUT_OF_STOCK_THRESHOLD;
   }
 }

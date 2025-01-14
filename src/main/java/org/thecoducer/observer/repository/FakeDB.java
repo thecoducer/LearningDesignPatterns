@@ -19,6 +19,14 @@ public class FakeDB {
     return itemMap;
   }
 
+  public static Item getItem(int itemId) {
+    return getItemMap().getOrDefault(itemId, Item.builder().quantity(0).build());
+  }
+
+  public static void addOrUpdateItem(Item item) {
+    getItemMap().put(item.getId(), item);
+  }
+
   private static void preloadDataForSoonToGoToOutOfStockTest() {
     Item itemWithQuantityThree = Item.builder().id(4).name("Dining Table").quantity(3).build();
     itemMap.put(itemWithQuantityThree.getId(), itemWithQuantityThree);
