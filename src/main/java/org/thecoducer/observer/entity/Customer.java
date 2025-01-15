@@ -2,6 +2,7 @@ package org.thecoducer.observer.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import org.thecoducer.observer.dto.CommunicationIdentifiers;
 import org.thecoducer.observer.eventsubscriber.EventSubscriber;
 import org.thecoducer.observer.util.NotifierUtil;
 
@@ -9,12 +10,11 @@ import org.thecoducer.observer.util.NotifierUtil;
 @Builder
 public class Customer implements EventSubscriber {
   private String name;
-  private String emailId;
-  private String phoneNumber;
+  private CommunicationIdentifiers communicationIdentifiers;
 
   @Override
   public void update() {
-    NotifierUtil.sendEmail(emailId);
-    NotifierUtil.sendSms(phoneNumber);
+    NotifierUtil.sendEmail(communicationIdentifiers.getEmailId());
+    NotifierUtil.sendSms(communicationIdentifiers.getPhoneNumber());
   }
 }

@@ -3,14 +3,15 @@ package org.thecoducer.observer.test;
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.thecoducer.observer.dto.CommunicationIdentifiers;
 import org.thecoducer.observer.entity.Customer;
 import org.thecoducer.observer.entity.WholesaleAgent;
 import org.thecoducer.observer.event.PriceUpdateEvent;
 import org.thecoducer.observer.event.StockUpdateEvent;
 import org.thecoducer.observer.eventpublisher.EventUpdatePublisher;
 import org.thecoducer.observer.service.EmailNotifierService;
-import org.thecoducer.observer.service.SmsNotifierService;
 import org.thecoducer.observer.service.ItemService;
+import org.thecoducer.observer.service.SmsNotifierService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -33,13 +34,11 @@ public class ItemServiceTest {
   public void testOutOfStockAvailableUpdates() {
     Customer rahul = Customer.builder()
         .name("Rahul")
-        .emailId("rahul@gmail.com")
-        .phoneNumber("9870098990")
+        .communicationIdentifiers(CommunicationIdentifiers.builder().emailId("rahul@gmail.com").phoneNumber("9870098990").build())
         .build();
     WholesaleAgent saumya = WholesaleAgent.builder()
         .name("Saumya")
-        .emailId("saumya@gmail.com")
-        .phoneNumber("879042556")
+        .communicationIdentifiers(CommunicationIdentifiers.builder().emailId("saumya@gmail.com").phoneNumber("879042556").build())
         .build();
 
     eventUpdatePublisher.subscribe(StockUpdateEvent.OUT_OF_STOCK_ITEM_AVAILABLE, rahul);
@@ -57,13 +56,11 @@ public class ItemServiceTest {
   public void testSoonToGoOutOfStockUpdates() {
     Customer pamela = Customer.builder()
         .name("Pamela")
-        .emailId("pamela@gmail.com")
-        .phoneNumber("9856678990")
+        .communicationIdentifiers(CommunicationIdentifiers.builder().emailId("pamela@gmail.com").phoneNumber("9856678990").build())
         .build();
     WholesaleAgent anwesha = WholesaleAgent.builder()
         .name("Anwesha")
-        .emailId("anwesha@gmail.com")
-        .phoneNumber("9812345990")
+        .communicationIdentifiers(CommunicationIdentifiers.builder().emailId("anwesha@gmail.com").phoneNumber("9812345990").build())
         .build();
 
     eventUpdatePublisher.subscribe(StockUpdateEvent.ITEM_SOON_TO_GO_OUT_OF_STOCK, pamela);
@@ -80,13 +77,11 @@ public class ItemServiceTest {
   public void testPriceIncreased() {
     Customer pamela = Customer.builder()
         .name("Pamela")
-        .emailId("pamela@gmail.com")
-        .phoneNumber("9856678990")
+        .communicationIdentifiers(CommunicationIdentifiers.builder().emailId("pamela@gmail.com").phoneNumber("9856678990").build())
         .build();
     WholesaleAgent anwesha = WholesaleAgent.builder()
         .name("Anwesha")
-        .emailId("anwesha@gmail.com")
-        .phoneNumber("9812345990")
+        .communicationIdentifiers(CommunicationIdentifiers.builder().emailId("anwesha@gmail.com").phoneNumber("9812345990").build())
         .build();
 
     eventUpdatePublisher.subscribe(PriceUpdateEvent.INCREASE_IN_PRICE, pamela);
@@ -104,13 +99,11 @@ public class ItemServiceTest {
   public void testPriceDecreased() {
     Customer pamela = Customer.builder()
         .name("Pamela")
-        .emailId("pamela@gmail.com")
-        .phoneNumber("9856678990")
+        .communicationIdentifiers(CommunicationIdentifiers.builder().emailId("pamela@gmail.com").phoneNumber("9856678990").build())
         .build();
     WholesaleAgent anwesha = WholesaleAgent.builder()
         .name("Anwesha")
-        .emailId("anwesha@gmail.com")
-        .phoneNumber("9812345990")
+        .communicationIdentifiers(CommunicationIdentifiers.builder().emailId("anwesha@gmail.com").phoneNumber("9812345990").build())
         .build();
 
     eventUpdatePublisher.subscribe(PriceUpdateEvent.DECREASE_IN_PRICE, pamela);
