@@ -18,13 +18,13 @@ public class ItemService {
 
   public void updateStock(int itemId, int newQuantity) {
     Item item = getItem(itemId);
+    addOrUpdateItem(item);
     log.debug("Stock updated. Item quantity {} to {}.", item.getQuantity(), newQuantity);
     if (isOutOfStockItemAvailable(item.getQuantity(), newQuantity)) {
       eventUpdatePublisher.notify(StockUpdateEvent.OUT_OF_STOCK_ITEM_AVAILABLE);
     } else if (isItemSoonToGoOutOfStock(newQuantity)) {
       eventUpdatePublisher.notify(StockUpdateEvent.ITEM_SOON_TO_GO_OUT_OF_STOCK);
     }
-    addOrUpdateItem(item);
   }
 
   private boolean isOutOfStockItemAvailable(int currentQuantity, int newQuantity) {
@@ -37,13 +37,13 @@ public class ItemService {
 
   public void updatePrice(int itemId, double newPrice) {
     Item item = getItem(itemId);
+    addOrUpdateItem(item);
     log.debug("Price updated. Item price {} to {}.", item.getPrice(), newPrice);
     if(newPrice > item.getPrice()) {
       eventUpdatePublisher.notify(PriceUpdateEvent.INCREASE_IN_PRICE);
     }else {
       eventUpdatePublisher.notify(PriceUpdateEvent.DECREASE_IN_PRICE);
     }
-    addOrUpdateItem(item);
   }
 
   private Item getItem(int itemId) {
