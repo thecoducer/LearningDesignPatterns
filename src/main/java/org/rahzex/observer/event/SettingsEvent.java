@@ -1,6 +1,6 @@
 package org.rahzex.observer.event;
 
-import org.thecoducer.observer.event.Event;
+import org.thecoducer.inventorymanagementsystem.event.Event;
 
 public enum SettingsEvent implements Event {
     FONT_UPDATED,

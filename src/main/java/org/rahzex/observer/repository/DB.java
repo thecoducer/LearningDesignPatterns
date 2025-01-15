@@ -1,7 +1,7 @@
 package org.rahzex.observer.repository;
 
 import lombok.Getter;
-import org.thecoducer.observer.event.Event;
+import org.thecoducer.inventorymanagementsystem.event.Event;
 import org.rahzex.observer.entity.FontSettings;
 import org.rahzex.observer.entity.Settings;
 import org.rahzex.observer.entity.ThemeSettings;

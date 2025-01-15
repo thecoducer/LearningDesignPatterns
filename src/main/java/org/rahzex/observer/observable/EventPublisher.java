@@ -1,7 +1,7 @@
 package org.rahzex.observer.observable;
 
 import org.rahzex.observer.observers.SettingsEventSubscriber;
-import org.thecoducer.observer.event.Event;
+import org.thecoducer.inventorymanagementsystem.event.Event;
 import org.rahzex.observer.entity.Settings;
 
 public interface EventPublisher {

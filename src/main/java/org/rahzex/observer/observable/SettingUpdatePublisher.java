@@ -4,7 +4,7 @@ import org.rahzex.observer.entity.Settings;
 import org.rahzex.observer.event.SettingsEvent;
 import org.rahzex.observer.observers.SettingsEventSubscriber;
 import org.rahzex.observer.repository.DB;
-import org.thecoducer.observer.event.Event;
+import org.thecoducer.inventorymanagementsystem.event.Event;
 
 import java.util.ArrayList;
 import java.util.List;

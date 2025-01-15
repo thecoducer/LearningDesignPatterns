@@ -1,9 +1,9 @@
-package org.thecoducer.observer.repository;
+package org.thecoducer.inventorymanagementsystem.repository;
 
 import lombok.Getter;
-import org.thecoducer.observer.entity.Item;
-import org.thecoducer.observer.event.Event;
-import org.thecoducer.observer.eventsubscriber.EventSubscriber;
+import org.thecoducer.inventorymanagementsystem.entity.Item;
+import org.thecoducer.inventorymanagementsystem.event.Event;
+import org.thecoducer.inventorymanagementsystem.eventsubscriber.EventSubscriber;
 
 import java.util.HashMap;
 import java.util.List;

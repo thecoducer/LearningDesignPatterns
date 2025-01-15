@@ -1,4 +1,4 @@
-package org.thecoducer.observer.config;
+package org.thecoducer.inventorymanagementsystem.config;
 
 
 public class StockUpdateConfig {
