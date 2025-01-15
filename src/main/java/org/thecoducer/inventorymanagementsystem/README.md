@@ -1,4 +1,5 @@
-#Inventory Management System
+# Inventory Management System
+
 This project is an Inventory Management System designed to demonstrate the power of clean software architecture through the application of various design patterns. By incorporating these patterns, the project highlights how they can improve code organization, maintainability, and scalability.
 
 Design Patterns Implemented So Far:
