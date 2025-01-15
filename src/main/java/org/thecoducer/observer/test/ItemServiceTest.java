@@ -89,8 +89,8 @@ public class ItemServiceTest {
         .phoneNumber("9812345990")
         .build();
 
-    eventUpdatePublisher.subscribe(PriceUpdateEvent.PRICE_INCREASED, pamela);
-    eventUpdatePublisher.subscribe(PriceUpdateEvent.PRICE_INCREASED, anwesha);
+    eventUpdatePublisher.subscribe(PriceUpdateEvent.INCREASED_IN_PRICE, pamela);
+    eventUpdatePublisher.subscribe(PriceUpdateEvent.INCREASED_IN_PRICE, anwesha);
 
     itemService.updatePrice(7, 5800);
 
@@ -113,8 +113,8 @@ public class ItemServiceTest {
         .phoneNumber("9812345990")
         .build();
 
-    eventUpdatePublisher.subscribe(PriceUpdateEvent.PRICE_DECREASED, pamela);
-    eventUpdatePublisher.subscribe(PriceUpdateEvent.PRICE_DECREASED, anwesha);
+    eventUpdatePublisher.subscribe(PriceUpdateEvent.DECREASE_IN_PRICE, pamela);
+    eventUpdatePublisher.subscribe(PriceUpdateEvent.DECREASE_IN_PRICE, anwesha);
 
     itemService.updatePrice(6, 42000);
 

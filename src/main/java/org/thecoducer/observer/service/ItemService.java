@@ -39,9 +39,9 @@ public class ItemService {
     Item item = getItem(itemId);
     log.debug("Price updated. Item price {} to {}.", item.getPrice(), newPrice);
     if(newPrice > item.getPrice()) {
-      eventUpdatePublisher.notify(PriceUpdateEvent.PRICE_INCREASED);
+      eventUpdatePublisher.notify(PriceUpdateEvent.INCREASED_IN_PRICE);
     }else {
-      eventUpdatePublisher.notify(PriceUpdateEvent.PRICE_DECREASED);
+      eventUpdatePublisher.notify(PriceUpdateEvent.DECREASE_IN_PRICE);
     }
     addOrUpdateItem(item);
   }

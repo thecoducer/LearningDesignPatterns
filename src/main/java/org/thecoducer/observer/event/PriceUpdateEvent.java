@@ -4,6 +4,6 @@ import lombok.Getter;
 
 @Getter
 public enum PriceUpdateEvent implements Event {
-  PRICE_INCREASED,
-  PRICE_DECREASED;
+  INCREASED_IN_PRICE,
+  DECREASE_IN_PRICE;
 }
