@@ -16,11 +16,12 @@ public class FakeDB {
 
   public static Map<Integer, Item> getItemMap() {
     preloadDataForSoonToGoToOutOfStockTest();
+    preloadDataForPriceUpdateTest();
     return itemMap;
   }
 
   public static Item getItem(int itemId) {
-    return getItemMap().getOrDefault(itemId, Item.builder().quantity(0).build());
+    return getItemMap().getOrDefault(itemId, Item.builder().quantity(0).price(0).build());
   }
 
   public static void addOrUpdateItem(Item item) {
@@ -30,5 +31,12 @@ public class FakeDB {
   private static void preloadDataForSoonToGoToOutOfStockTest() {
     Item itemWithQuantityThree = Item.builder().id(4).name("Dining Table").quantity(3).build();
     itemMap.put(itemWithQuantityThree.getId(), itemWithQuantityThree);
+  }
+
+  private static void preloadDataForPriceUpdateTest() {
+    Item itemOne = Item.builder().id(6).name("Wardrobe").quantity(4).price(60000).build();
+    Item itemTwo = Item.builder().id(7).name("Bed side table").quantity(5).price(5000).build();
+    itemMap.put(itemOne.getId(), itemOne);
+    itemMap.put(itemTwo.getId(), itemTwo);
   }
 }

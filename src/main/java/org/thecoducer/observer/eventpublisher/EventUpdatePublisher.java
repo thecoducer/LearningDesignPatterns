@@ -8,9 +8,10 @@ import org.thecoducer.observer.repository.FakeDB;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
-public class StockUpdatePublisher implements EventPublisher {
+public class EventUpdatePublisher implements EventPublisher {
   private final Map<Event, List<EventSubscriber>> eventSubscriberMap = FakeDB.getEventSubscriberMap();
 
   @Override
@@ -28,7 +29,7 @@ public class StockUpdatePublisher implements EventPublisher {
 
   @Override
   public void notify(Event event) {
-    List<EventSubscriber> subscribers = eventSubscriberMap.get(event);
-    subscribers.forEach(EventSubscriber::update);
+    Optional.ofNullable(eventSubscriberMap.get(event))
+        .ifPresent(subscribers -> subscribers.forEach(EventSubscriber::update));
   }
 }
