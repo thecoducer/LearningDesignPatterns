@@ -28,7 +28,7 @@ public class ItemService {
   }
 
   private boolean isOutOfStockItemAvailable(int currentQuantity, int newQuantity) {
-    return currentQuantity == 0 && newQuantity != 0;
+    return currentQuantity == 0 && newQuantity > 0;
   }
 
   private boolean isItemSoonToGoOutOfStock(int newQuantity) {

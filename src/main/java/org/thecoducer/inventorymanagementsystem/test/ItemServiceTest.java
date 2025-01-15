@@ -3,7 +3,7 @@ package org.thecoducer.inventorymanagementsystem.test;
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.thecoducer.inventorymanagementsystem.dto.CommunicationIdentifiers;
+import org.thecoducer.inventorymanagementsystem.entity.CommunicationIdentifiers;
 import org.thecoducer.inventorymanagementsystem.entity.Customer;
 import org.thecoducer.inventorymanagementsystem.entity.WholesaleAgent;
 import org.thecoducer.inventorymanagementsystem.event.PriceUpdateEvent;

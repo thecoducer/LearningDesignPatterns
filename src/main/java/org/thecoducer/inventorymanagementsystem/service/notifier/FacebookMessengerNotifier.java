@@ -1,7 +1,7 @@
 package org.thecoducer.inventorymanagementsystem.service.notifier;
 
 import lombok.extern.slf4j.Slf4j;
-import org.thecoducer.inventorymanagementsystem.dto.CommunicationIdentifiers;
+import org.thecoducer.inventorymanagementsystem.entity.CommunicationIdentifiers;
 
 @Slf4j
 public class FacebookMessengerNotifier extends NotifierDecorator {
