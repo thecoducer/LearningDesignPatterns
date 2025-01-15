@@ -1,4 +1,4 @@
-package org.thecoducer.observer.entity;
+package org.thecoducer.inventorymanagementsystem.entity;
 
 import lombok.Builder;
 import lombok.Data;

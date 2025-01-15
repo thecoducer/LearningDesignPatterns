@@ -1,4 +1,4 @@
-package org.thecoducer.observer.dto;
+package org.thecoducer.inventorymanagementsystem.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -10,4 +10,7 @@ public class CommunicationIdentifiers {
   private String phoneNumber;
   private String slackId;
   private String facebookMessengerId;
+  private boolean isSmsEnabled;
+  private boolean isSlackEnabled;
+  private boolean isFacebookMessengerEnabled;
 }
