@@ -1,12 +1,12 @@
-package org.thecoducer.observer.service;
+package org.thecoducer.inventorymanagementsystem.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.thecoducer.observer.config.StockUpdateConfig;
-import org.thecoducer.observer.entity.Item;
-import org.thecoducer.observer.event.PriceUpdateEvent;
-import org.thecoducer.observer.event.StockUpdateEvent;
-import org.thecoducer.observer.eventpublisher.EventUpdatePublisher;
-import org.thecoducer.observer.repository.FakeDB;
+import org.thecoducer.inventorymanagementsystem.config.StockUpdateConfig;
+import org.thecoducer.inventorymanagementsystem.entity.Item;
+import org.thecoducer.inventorymanagementsystem.event.PriceUpdateEvent;
+import org.thecoducer.inventorymanagementsystem.event.StockUpdateEvent;
+import org.thecoducer.inventorymanagementsystem.eventpublisher.EventUpdatePublisher;
+import org.thecoducer.inventorymanagementsystem.repository.FakeDB;
 
 @Slf4j
 public class ItemService {
@@ -28,7 +28,7 @@ public class ItemService {
   }
 
   private boolean isOutOfStockItemAvailable(int currentQuantity, int newQuantity) {
-    return currentQuantity == 0 && newQuantity != 0;
+    return currentQuantity == 0 && newQuantity > 0;
   }
 
   private boolean isItemSoonToGoOutOfStock(int newQuantity) {

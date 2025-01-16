@@ -1,9 +1,9 @@
-package org.thecoducer.observer.eventpublisher;
+package org.thecoducer.inventorymanagementsystem.eventpublisher;
 
 import lombok.extern.slf4j.Slf4j;
-import org.thecoducer.observer.event.Event;
-import org.thecoducer.observer.eventsubscriber.EventSubscriber;
-import org.thecoducer.observer.repository.FakeDB;
+import org.thecoducer.inventorymanagementsystem.event.Event;
+import org.thecoducer.inventorymanagementsystem.eventsubscriber.EventSubscriber;
+import org.thecoducer.inventorymanagementsystem.repository.FakeDB;
 
 import java.util.ArrayList;
 import java.util.List;

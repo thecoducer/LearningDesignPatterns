@@ -1,4 +1,4 @@
-package org.thecoducer.observer.event;
+package org.thecoducer.inventorymanagementsystem.event;
 
 import lombok.Getter;
 
