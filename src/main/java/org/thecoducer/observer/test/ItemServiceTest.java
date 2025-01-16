@@ -9,8 +9,8 @@ import org.thecoducer.observer.event.PriceUpdateEvent;
 import org.thecoducer.observer.event.StockUpdateEvent;
 import org.thecoducer.observer.eventpublisher.EventUpdatePublisher;
 import org.thecoducer.observer.service.EmailNotifierService;
-import org.thecoducer.observer.service.SmsNotifierService;
 import org.thecoducer.observer.service.ItemService;
+import org.thecoducer.observer.service.SmsNotifierService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
