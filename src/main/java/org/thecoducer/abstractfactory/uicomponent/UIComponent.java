@@ -3,6 +3,7 @@ package org.thecoducer.abstractfactory.uicomponent;
 import lombok.Data;
 
 @Data
-public class UIComponent {
+public abstract class UIComponent {
   private String label;
+  protected abstract void render();
 }

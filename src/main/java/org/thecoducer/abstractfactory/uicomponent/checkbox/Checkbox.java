@@ -5,4 +5,8 @@ import org.thecoducer.abstractfactory.uicomponent.UIComponent;
 
 @Slf4j
 public class Checkbox extends UIComponent {
+  @Override
+  public void render() {
+    // common functionality
+  }
 }

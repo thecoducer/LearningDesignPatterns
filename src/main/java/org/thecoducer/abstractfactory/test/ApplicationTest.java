@@ -3,7 +3,7 @@ package org.thecoducer.abstractfactory.test;
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.Test;
 import org.thecoducer.abstractfactory.enums.UIStyle;
-import org.thecoducer.abstractfactory.factory.BasicUIComponent;
+import org.thecoducer.abstractfactory.factory.GUIFactory;
 import org.thecoducer.abstractfactory.uicomponent.button.Button;
 import org.thecoducer.abstractfactory.uicomponent.button.MacButton;
 import org.thecoducer.abstractfactory.uicomponent.button.WinButton;
@@ -22,12 +22,12 @@ public class ApplicationTest {
   @Test
   public void testMacOSComponents() {
     String buttonText = "Click me";
-    Button button = BasicUIComponent.createButton(UIStyle.MAC_OS);
+    Button button = GUIFactory.getFactory(UIStyle.MAC_OS).createButton();
     button.setLabel(buttonText);
     button.render();
 
     String checkboxText = "To-do";
-    Checkbox checkbox = BasicUIComponent.createCheckbox(UIStyle.MAC_OS);
+    Checkbox checkbox = GUIFactory.getFactory(UIStyle.MAC_OS).createCheckbox();
     checkbox.setLabel(checkboxText);
     checkbox.render();
 
@@ -39,25 +39,31 @@ public class ApplicationTest {
 
   @Test
   public void testWinOSComponents() {
-    Button button = BasicUIComponent.createButton(UIStyle.WINDOWS_OS);
+    String buttonText = "Submit";
+    Button button = GUIFactory.getFactory(UIStyle.WINDOWS_OS).createButton();
+    button.setLabel(buttonText);
     button.render();
 
-    Checkbox checkbox = BasicUIComponent.createCheckbox(UIStyle.WINDOWS_OS);
+    String checkboxText = "Plans";
+    Checkbox checkbox = GUIFactory.getFactory(UIStyle.WINDOWS_OS).createCheckbox();
+    checkbox.setLabel(checkboxText);
     checkbox.render();
 
     assertEquals("WinButton rendered.", winButtonLogCaptor.getInfoLogs().getFirst());
+    assertEquals(buttonText, button.getLabel());
     assertEquals("WinCheckbox rendered.", winCheckboxLogCaptor.getInfoLogs().getFirst());
+    assertEquals(checkboxText, checkbox.getLabel());
   }
 
   @Test
   public void testBothPlatformComponents() {
-    Button buttonOne = BasicUIComponent.createButton(UIStyle.WINDOWS_OS);
+    Button buttonOne = GUIFactory.getFactory(UIStyle.WINDOWS_OS).createButton();
     buttonOne.render();
 
-    Button buttonTwo = BasicUIComponent.createButton(UIStyle.MAC_OS);
+    Button buttonTwo = GUIFactory.getFactory(UIStyle.MAC_OS).createButton();
     buttonTwo.render();
 
-    Checkbox checkbox = BasicUIComponent.createCheckbox(UIStyle.WINDOWS_OS);
+    Checkbox checkbox = GUIFactory.getFactory(UIStyle.WINDOWS_OS).createCheckbox();
     checkbox.render();
 
     assertEquals("WinButton rendered.", winButtonLogCaptor.getInfoLogs().getFirst());
