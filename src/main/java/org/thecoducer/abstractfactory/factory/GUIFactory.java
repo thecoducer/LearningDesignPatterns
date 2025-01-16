@@ -12,7 +12,7 @@ public interface GUIFactory {
   static GUIFactory getFactory(UIStyle uiStyle) {
     return switch (uiStyle) {
       case MAC_OS -> new MacFactory();
-      case WINDOWS_OS -> new WinFactory();
+      case WINDOWS -> new WinFactory();
     };
   }
 }

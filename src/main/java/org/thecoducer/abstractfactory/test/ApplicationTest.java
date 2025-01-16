@@ -40,12 +40,12 @@ public class ApplicationTest {
   @Test
   public void testWinOSComponents() {
     String buttonText = "Submit";
-    Button button = GUIFactory.getFactory(UIStyle.WINDOWS_OS).createButton();
+    Button button = GUIFactory.getFactory(UIStyle.WINDOWS).createButton();
     button.setLabel(buttonText);
     button.render();
 
     String checkboxText = "Plans";
-    Checkbox checkbox = GUIFactory.getFactory(UIStyle.WINDOWS_OS).createCheckbox();
+    Checkbox checkbox = GUIFactory.getFactory(UIStyle.WINDOWS).createCheckbox();
     checkbox.setLabel(checkboxText);
     checkbox.render();
 
@@ -57,13 +57,13 @@ public class ApplicationTest {
 
   @Test
   public void testBothPlatformComponents() {
-    Button buttonOne = GUIFactory.getFactory(UIStyle.WINDOWS_OS).createButton();
+    Button buttonOne = GUIFactory.getFactory(UIStyle.WINDOWS).createButton();
     buttonOne.render();
 
     Button buttonTwo = GUIFactory.getFactory(UIStyle.MAC_OS).createButton();
     buttonTwo.render();
 
-    Checkbox checkbox = GUIFactory.getFactory(UIStyle.WINDOWS_OS).createCheckbox();
+    Checkbox checkbox = GUIFactory.getFactory(UIStyle.WINDOWS).createCheckbox();
     checkbox.render();
 
     assertEquals("WinButton rendered.", winButtonLogCaptor.getInfoLogs().getFirst());
