@@ -10,13 +10,11 @@ import org.thecoducer.abstractfactory.uicomponent.checkbox.WinCheckbox;
 public class WinFactory implements GUIFactory {
   @Override
   public Button createButton() {
-    log.info("WinButton created.");
     return new WinButton();
   }
 
   @Override
   public Checkbox createCheckbox() {
-    log.info("WinCheckbox created.");
     return new WinCheckbox();
   }
 }

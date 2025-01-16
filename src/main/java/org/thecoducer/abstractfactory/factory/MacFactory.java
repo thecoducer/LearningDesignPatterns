@@ -10,13 +10,11 @@ import org.thecoducer.abstractfactory.uicomponent.checkbox.MacCheckbox;
 public class MacFactory implements GUIFactory {
   @Override
   public Button createButton() {
-    log.info("MacButton created.");
     return new MacButton();
   }
 
   @Override
   public Checkbox createCheckbox() {
-    log.info("MacCheckbox created.");
     return new MacCheckbox();
   }
 }

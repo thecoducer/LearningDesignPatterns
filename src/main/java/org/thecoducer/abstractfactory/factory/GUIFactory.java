@@ -5,6 +5,5 @@ import org.thecoducer.abstractfactory.uicomponent.checkbox.Checkbox;
 
 public interface GUIFactory {
   Button createButton();
-
   Checkbox createCheckbox();
 }
