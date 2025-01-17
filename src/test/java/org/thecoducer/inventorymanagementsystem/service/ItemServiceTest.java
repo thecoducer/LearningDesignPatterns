@@ -1,4 +1,4 @@
-package org.thecoducer.inventorymanagementsystem.test;
+package org.thecoducer.inventorymanagementsystem.service;
 
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +9,6 @@ import org.thecoducer.inventorymanagementsystem.entity.WholesaleAgent;
 import org.thecoducer.inventorymanagementsystem.event.PriceUpdateEvent;
 import org.thecoducer.inventorymanagementsystem.event.StockUpdateEvent;
 import org.thecoducer.inventorymanagementsystem.eventpublisher.EventUpdatePublisher;
-import org.thecoducer.inventorymanagementsystem.service.ItemService;
 import org.thecoducer.inventorymanagementsystem.service.notifier.EmailNotifier;
 import org.thecoducer.inventorymanagementsystem.service.notifier.FacebookMessengerNotifier;
 import org.thecoducer.inventorymanagementsystem.service.notifier.SlackNotifier;

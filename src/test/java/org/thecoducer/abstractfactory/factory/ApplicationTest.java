@@ -1,9 +1,8 @@
-package org.thecoducer.abstractfactory.test;
+package org.thecoducer.abstractfactory.factory;
 
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.Test;
 import org.thecoducer.abstractfactory.enums.UIStyle;
-import org.thecoducer.abstractfactory.factory.GUIFactory;
 import org.thecoducer.abstractfactory.uicomponent.button.Button;
 import org.thecoducer.abstractfactory.uicomponent.button.MacButton;
 import org.thecoducer.abstractfactory.uicomponent.button.WinButton;
