@@ -1,4 +1,4 @@
-package org.thecoducer.strategy.test;
+package org.thecoducer.strategy.service;
 
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,6 @@ import org.thecoducer.strategy.dto.PaymentDetails;
 import org.thecoducer.strategy.entity.Card;
 import org.thecoducer.strategy.entity.NetBanking;
 import org.thecoducer.strategy.entity.Upi;
-import org.thecoducer.strategy.service.PaymentService;
 import org.thecoducer.strategy.strategy.PayByCardStrategy;
 import org.thecoducer.strategy.strategy.PayByNetBankingStrategy;
 import org.thecoducer.strategy.strategy.PayByUpiStrategy;
