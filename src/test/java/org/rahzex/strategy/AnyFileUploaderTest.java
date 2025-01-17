@@ -1,4 +1,4 @@
-package org.rahzex.strategy.test;
+package org.rahzex.strategy;
 
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.Assertions;
@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.rahzex.strategy.FileUploaderFactory;
 import org.rahzex.strategy.enums.FileType;
 import org.rahzex.strategy.file.*;
 import org.rahzex.strategy.uploader.AnyFileUploader;
