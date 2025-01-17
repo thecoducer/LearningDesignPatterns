@@ -15,24 +15,17 @@ jobs:
     steps:
       # Step 1: Checkout code
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Set up JDK (Java Development Kit)
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distribution: 'adoptopenjdk'
+          distribution: 'temurin'
+          cache: maven
 
-      # Step 3: Cache Maven dependencies
-      - name: Cache Maven dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
 
       # Step 4: Run Maven build and tests
-      - name: Run Maven Build and Tests
-        run: mvn clean install --no-transfer-progress -DskipTests=false
+      - name: Build with Maven
+        run: mvn -B test --file pom.xml
