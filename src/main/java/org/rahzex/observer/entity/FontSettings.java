@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FontSettings {
-    private String fontStyle;
-    private int fontSize;
+  private String fontStyle;
+  private int fontSize;
 }

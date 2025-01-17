@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ThemeSettings {
-    private String primaryColor;
-    private String accentColor;
+  private String primaryColor;
+  private String accentColor;
 }

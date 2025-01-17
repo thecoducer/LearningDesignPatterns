@@ -11,24 +11,24 @@ import java.util.List;
 import java.util.Map;
 
 public class SettingUpdatePublisher implements EventPublisher {
-    private final Map<Event, List<SettingsEventSubscriber>> eventSubscriberMap = DB.getEventSubscribers();
+  private final Map<Event, List<SettingsEventSubscriber>> eventSubscriberMap = DB.getEventSubscribers();
 
-    @Override
-    public void subscribe(Event event, SettingsEventSubscriber eventSubscriber) {
-        eventSubscriberMap.computeIfAbsent(event, _ -> new ArrayList<>()).add(eventSubscriber);
-    }
+  @Override
+  public void subscribe(Event event, SettingsEventSubscriber eventSubscriber) {
+    eventSubscriberMap.computeIfAbsent(event, _ -> new ArrayList<>()).add(eventSubscriber);
+  }
 
-    @Override
-    public void unsubscribe(Event event, SettingsEventSubscriber eventSubscriber) {
-        eventSubscriberMap.computeIfPresent(event, (_, eventSubscribers) -> {
-            eventSubscribers.remove(eventSubscriber);
-            return eventSubscribers.isEmpty() ? null : eventSubscribers;
-        });
-    }
+  @Override
+  public void unsubscribe(Event event, SettingsEventSubscriber eventSubscriber) {
+    eventSubscriberMap.computeIfPresent(event, (_, eventSubscribers) -> {
+      eventSubscribers.remove(eventSubscriber);
+      return eventSubscribers.isEmpty() ? null : eventSubscribers;
+    });
+  }
 
-    @Override
-    public void publish(Event event, Settings settings) {
-        List<SettingsEventSubscriber> subscribers = eventSubscriberMap.get(event);
-        subscribers.forEach(subscriber -> subscriber.update((SettingsEvent) event, settings));
-    }
+  @Override
+  public void publish(Event event, Settings settings) {
+    List<SettingsEventSubscriber> subscribers = eventSubscriberMap.get(event);
+    subscribers.forEach(subscriber -> subscriber.update((SettingsEvent) event, settings));
+  }
 }
