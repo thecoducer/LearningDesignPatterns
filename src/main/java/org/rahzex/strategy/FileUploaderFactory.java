@@ -9,7 +9,7 @@ public class FileUploaderFactory {
         return switch (fileType) {
             case XML -> new XMLFileUploader();
             case CSV -> new CSVFileUploader();
-            case JSON -> new JSONFIleUploader();
+            case JSON -> new JSONFileUploader();
             case PDF -> new PDFFileUploader();
         };
     }
