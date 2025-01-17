@@ -1,9 +1,8 @@
-package org.thecoducer.inventorymanagementsystem.util;
+package org.thecoducer.inventorymanagementsystem.service.notifier;
 
 import org.thecoducer.inventorymanagementsystem.entity.CommunicationIdentifiers;
-import org.thecoducer.inventorymanagementsystem.service.notifier.NotificationManager;
 
-public class NotifierUtil {
+public class NotifierFacade {
   private static final NotificationManager notificationManager = new NotificationManager();
 
   public static void sendCommunication(CommunicationIdentifiers communicationIdentifiers) {

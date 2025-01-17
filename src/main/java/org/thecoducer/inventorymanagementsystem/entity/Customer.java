@@ -3,7 +3,7 @@ package org.thecoducer.inventorymanagementsystem.entity;
 import lombok.Builder;
 import lombok.Data;
 import org.thecoducer.inventorymanagementsystem.eventsubscriber.EventSubscriber;
-import org.thecoducer.inventorymanagementsystem.util.NotifierUtil;
+import org.thecoducer.inventorymanagementsystem.service.notifier.NotifierFacade;
 
 @Data
 @Builder
@@ -13,6 +13,6 @@ public class Customer implements EventSubscriber {
 
   @Override
   public void update() {
-    NotifierUtil.sendCommunication(communicationIdentifiers);
+    NotifierFacade.sendCommunication(communicationIdentifiers);
   }
 }
