@@ -6,18 +6,18 @@ import org.rahzex.observer.observable.SettingUpdatePublisher;
 import org.rahzex.observer.repository.DB;
 
 public class FontService {
-    private SettingUpdatePublisher publisher;
+  private SettingUpdatePublisher publisher;
 
-    public FontService() {
-        publisher = new SettingUpdatePublisher();
-    }
+  public FontService() {
+    publisher = new SettingUpdatePublisher();
+  }
 
-    public void update(FontSettings fontSettings) {
-        DB.setFontSettings(fontSettings);
-        publisher.publish(SettingsEvent.FONT_UPDATED, DB.getSettings());
-    }
+  public void update(FontSettings fontSettings) {
+    DB.setFontSettings(fontSettings);
+    publisher.publish(SettingsEvent.FONT_UPDATED, DB.getSettings());
+  }
 
-    public FontSettings getFontSettings() {
-        return DB.getFontSettings();
-    }
+  public FontSettings getFontSettings() {
+    return DB.getFontSettings();
+  }
 }
