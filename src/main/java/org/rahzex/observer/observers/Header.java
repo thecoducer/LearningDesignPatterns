@@ -1,13 +1,12 @@
 package org.rahzex.observer.observers;
 
+import java.util.Objects;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.rahzex.observer.entity.Settings;
 import org.rahzex.observer.event.SettingsEvent;
-
-import java.util.Objects;
 
 @Data
 @Builder

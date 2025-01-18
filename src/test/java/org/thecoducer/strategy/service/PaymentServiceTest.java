@@ -1,5 +1,7 @@
 package org.thecoducer.strategy.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.Test;
 import org.thecoducer.strategy.dto.PaymentDetails;
@@ -9,8 +11,6 @@ import org.thecoducer.strategy.entity.Upi;
 import org.thecoducer.strategy.strategy.PayByCardStrategy;
 import org.thecoducer.strategy.strategy.PayByNetBankingStrategy;
 import org.thecoducer.strategy.strategy.PayByUpiStrategy;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaymentServiceTest {
   private final PaymentService paymentService = new PaymentService();
