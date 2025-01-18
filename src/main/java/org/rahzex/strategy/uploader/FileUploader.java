@@ -1,11 +1,12 @@
 package org.rahzex.strategy.uploader;
 
-import lombok.extern.slf4j.Slf4j;
+import org.rahzex.strategy.FileUploaderFactory;
 import org.rahzex.strategy.file.File;
 
-@Slf4j
-public abstract class FileUploader {
-    public void upload(File file) {
-        log.info("Uploading {} file...", file.getType());
+public class FileUploader {
+
+    public static void upload(File file){
+        FileUploaderFactory factory = new FileUploaderFactory();
+        factory.getInstance(file.getType()).upload(file);
     }
 }
