@@ -1,4 +1,4 @@
-package org.rahzex.observer.test;
+package org.rahzex.observer;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
