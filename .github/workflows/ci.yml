@@ -46,15 +46,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-#      # Step 3: Run Spotless Check
-#      - name: Run Spotless Check
-#        run: mvn spotless:check
-
-      # Step 4: Auto-format code if check fails
+      # Step 3: Auto-format code if check fails
       - name: Run Spotless Apply
         run: mvn clean spotless:apply
 
-      # Step 5: Commit and push formatted code
+      # Step 4: Commit and push formatted code
       - name: Commit and push changes
         if: ${{ github.event_name == 'pull_request' }}
         run: |
