@@ -1,5 +1,7 @@
 package org.rahzex.observer;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.rahzex.observer.entity.FontSettings;
@@ -10,8 +12,6 @@ import org.rahzex.observer.observers.Header;
 import org.rahzex.observer.observers.TextPanel;
 import org.rahzex.observer.service.FontService;
 import org.rahzex.observer.service.ThemeService;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestSettingsUpdater {
   private FontService fontService;

@@ -1,9 +1,9 @@
 package org.rahzex.decorator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TextDecorationManagerTest {
   private TextDecorationManager textDecorationManager;
@@ -24,11 +24,12 @@ public class TextDecorationManagerTest {
 
   @Test
   void testBoldAndItalicTextDecoration() {
-    TextDecorationPreferences preferences = TextDecorationPreferences.builder()
-        .makeItalic(true)
-        .makeUnderlined(false)
-        .makeBold(true)
-        .build();
+    TextDecorationPreferences preferences =
+        TextDecorationPreferences.builder()
+            .makeItalic(true)
+            .makeUnderlined(false)
+            .makeBold(true)
+            .build();
 
     var result = textDecorationManager.decorate(preferences);
 
@@ -37,11 +38,12 @@ public class TextDecorationManagerTest {
 
   @Test
   void testAllTextDecoration() {
-    TextDecorationPreferences preferences = TextDecorationPreferences.builder()
-        .makeItalic(true)
-        .makeUnderlined(true)
-        .makeBold(true)
-        .build();
+    TextDecorationPreferences preferences =
+        TextDecorationPreferences.builder()
+            .makeItalic(true)
+            .makeUnderlined(true)
+            .makeBold(true)
+            .build();
 
     var result = textDecorationManager.decorate(preferences);
 
