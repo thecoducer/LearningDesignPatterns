@@ -63,8 +63,6 @@ jobs:
       # Step 1: Check out the code
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
         # Step 2: Set up JDK (Java Development Kit)
       - name: Set up JDK 22
@@ -84,9 +82,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin
-          git checkout ${{ github.head_ref }}
           git add .
           git commit -m "Apply code formatting"
-          git push origin ${{ github.head_ref }}
+          git push
         continue-on-error: true
