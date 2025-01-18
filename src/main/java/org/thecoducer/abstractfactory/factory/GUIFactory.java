@@ -5,14 +5,14 @@ import org.thecoducer.abstractfactory.uicomponent.button.Button;
 import org.thecoducer.abstractfactory.uicomponent.checkbox.Checkbox;
 
 public interface GUIFactory {
-  Button createButton();
-
-  Checkbox createCheckbox();
-
   static GUIFactory getFactory(UIStyle uiStyle) {
     return switch (uiStyle) {
       case MAC_OS -> new MacFactory();
       case WINDOWS -> new WinFactory();
     };
   }
+
+  Button createButton();
+
+  Checkbox createCheckbox();
 }
