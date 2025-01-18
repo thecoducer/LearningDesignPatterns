@@ -6,7 +6,7 @@ on:
       - main
   push:
     branches:
-      - ${{ github.head_ref }}
+      - format-code
 
 permissions:
   checks: write
