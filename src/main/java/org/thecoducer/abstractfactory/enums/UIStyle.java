@@ -4,6 +4,5 @@ import lombok.Getter;
 
 @Getter
 public enum UIStyle {
-  MAC_OS,
-  WINDOWS
+  MAC_OS, WINDOWS
 }
