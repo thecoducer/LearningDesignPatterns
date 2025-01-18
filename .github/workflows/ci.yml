@@ -48,7 +48,6 @@ jobs:
 
       # Step 4: Auto-format code if check fails
       - name: Run Spotless Apply
-        if: ${{ failure() }}
         run: mvn spotless:apply
 
       # Step 5: Commit and push formatted code
