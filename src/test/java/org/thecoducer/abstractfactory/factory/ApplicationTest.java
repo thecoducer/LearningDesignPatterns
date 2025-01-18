@@ -1,5 +1,7 @@
 package org.thecoducer.abstractfactory.factory;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.Test;
 import org.thecoducer.abstractfactory.enums.UIStyle;
@@ -9,8 +11,6 @@ import org.thecoducer.abstractfactory.uicomponent.button.WinButton;
 import org.thecoducer.abstractfactory.uicomponent.checkbox.Checkbox;
 import org.thecoducer.abstractfactory.uicomponent.checkbox.MacCheckbox;
 import org.thecoducer.abstractfactory.uicomponent.checkbox.WinCheckbox;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ApplicationTest {
   private final LogCaptor macButtonLogCaptor = LogCaptor.forClass(MacButton.class);
