@@ -1,10 +1,10 @@
 package org.thecoducer.adapter;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest {
   private StockDataProcessor stockDataProcessor;
@@ -26,7 +26,7 @@ class ApplicationTest {
     XMLFile xmlFile = JsonXmlConverter.doForward(jsonFile);
     XMLFile processedXMLFile = stockDataProcessor.processData(xmlFile);
     analyticsService.doAnalysis(JsonXmlConverter.doBackward(processedXMLFile));
-    assertEquals("Analysing... Sales_processed.json", analyticsServiceLogCaptor.getInfoLogs().getFirst());
+    assertEquals(
+        "Analysing... Sales_processed.json", analyticsServiceLogCaptor.getInfoLogs().getFirst());
   }
-
 }
