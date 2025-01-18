@@ -1,4 +1,4 @@
-name: Tests
+name: Checks
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  checks:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,22 +22,28 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-
-      # Step 4: Run Maven build and tests
+      # Step 3: Run Maven build and tests
       - name: Build with Maven
         run: mvn -B test --file pom.xml
 
-  formatter:
+  check-format:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3 # v2 minimum required
-      - uses: axel-op/googlejavaformat-action@v3
-        with:
-          args: "--replace"
-          skip-commit: false
-          version: "v1.17.0"
 
-      - name: Print diffs
-        run: |
-          echo "Please read the README.md file and install pre-commit hooks to properly format the files and resolve this error"
-          git --no-pager diff --exit-code
+    steps:
+      # Step 1: Check out the code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+        # Step 2: Set up JDK (Java Development Kit)
+      - name: Set up JDK 22
+        uses: actions/setup-java@v4
+        with:
+          java-version: '22'
+          distribution: 'temurin'
+          cache: maven
+
+      # Step 3: Auto-format code if check fails
+      - name: Run Spotless Check
+        run: mvn clean spotless:check
