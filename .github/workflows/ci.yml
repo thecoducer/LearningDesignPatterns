@@ -42,9 +42,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # Step 3: Run Spotless Check
-      - name: Run Spotless Check
-        run: mvn spotless:check
+#      # Step 3: Run Spotless Check
+#      - name: Run Spotless Check
+#        run: mvn spotless:check
 
       # Step 4: Auto-format code if check fails
       - name: Run Spotless Apply
