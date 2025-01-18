@@ -12,8 +12,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  formatter:
-    name: formatter # Explicitly define job name
+  format:
+    name: format # This name must match the required status check
     runs-on: ubuntu-latest
 
     steps:
@@ -43,3 +43,17 @@ jobs:
           git commit -m "Apply code formatting"
           git push origin ${{ github.head_ref }}
         continue-on-error: true
+
+      - name: Report Status
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'format',
+              head_sha: context.sha,
+              status: 'completed',
+              conclusion: 'success',
+            });
+
