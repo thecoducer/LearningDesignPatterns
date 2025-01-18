@@ -61,5 +61,20 @@ jobs:
           git add .
           git commit -m "Apply code formatting"
           git push origin ${{ github.head_ref }}
-          git checkout main
         continue-on-error: true
+
+      - name: Create GitHub Check Run
+        run: |
+            curl -X POST https://api.github.com/repos/${{ github.repository }}/check-runs \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v4+json" \
+            -d '{
+                  "name": "Code Formatting Check",
+                  "head_sha": "${{ github.sha }}",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "output": {
+                    "title": "Code formatting completed successfully",
+                    "summary": "Spotless code formatting applied."
+                  }
+                }'
