@@ -1,5 +1,8 @@
 package org.rahzex.observer.repository;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import lombok.Getter;
 import org.rahzex.observer.entity.FontSettings;
 import org.rahzex.observer.entity.Settings;
@@ -7,20 +10,13 @@ import org.rahzex.observer.entity.ThemeSettings;
 import org.rahzex.observer.observers.SettingsEventSubscriber;
 import org.thecoducer.inventorymanagementsystem.event.Event;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class DB {
-  @Getter
-  private static FontSettings fontSettings = new FontSettings("ST1", 0);
-  @Getter
-  private static ThemeSettings themeSettings = new ThemeSettings("BLACK", "GREY");
-  private static Settings settings = Settings.builder()
-      .themeSettings(themeSettings)
-      .fontSettings(fontSettings)
-      .build();
-  private static final Map<Event, List<SettingsEventSubscriber>> eventSubscriberMap = new HashMap<>();
+  @Getter private static FontSettings fontSettings = new FontSettings("ST1", 0);
+  @Getter private static ThemeSettings themeSettings = new ThemeSettings("BLACK", "GREY");
+  private static Settings settings =
+      Settings.builder().themeSettings(themeSettings).fontSettings(fontSettings).build();
+  private static final Map<Event, List<SettingsEventSubscriber>> eventSubscriberMap =
+      new HashMap<>();
 
   public static void setFontSettings(FontSettings fontSettings) {
     DB.fontSettings = fontSettings;

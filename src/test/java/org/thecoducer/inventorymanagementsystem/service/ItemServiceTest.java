@@ -1,5 +1,7 @@
 package org.thecoducer.inventorymanagementsystem.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,8 +15,6 @@ import org.thecoducer.inventorymanagementsystem.service.notifier.EmailNotifier;
 import org.thecoducer.inventorymanagementsystem.service.notifier.FacebookMessengerNotifier;
 import org.thecoducer.inventorymanagementsystem.service.notifier.SlackNotifier;
 import org.thecoducer.inventorymanagementsystem.service.notifier.SmsNotifier;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ItemServiceTest {
 
@@ -37,25 +37,29 @@ public class ItemServiceTest {
 
   @Test
   public void testOutOfStockAvailableUpdates() {
-    Customer rahul = Customer.builder()
-        .name("Rahul")
-        .communicationIdentifiers(CommunicationIdentifiers.builder()
-            .emailId("rahul@gmail.com")
-            .phoneNumber("9870098990")
-            .slackId("rahzex")
-            .isSmsEnabled(true)
-            .isSlackEnabled(true)
-            .build())
-        .build();
-    WholesaleAgent saumya = WholesaleAgent.builder()
-        .name("Saumya")
-        .communicationIdentifiers(CommunicationIdentifiers.builder()
-            .emailId("saumya@gmail.com")
-            .phoneNumber("879042556")
-            .facebookMessengerId("saumya34")
-            .isFacebookMessengerEnabled(true)
-            .build())
-        .build();
+    Customer rahul =
+        Customer.builder()
+            .name("Rahul")
+            .communicationIdentifiers(
+                CommunicationIdentifiers.builder()
+                    .emailId("rahul@gmail.com")
+                    .phoneNumber("9870098990")
+                    .slackId("rahzex")
+                    .isSmsEnabled(true)
+                    .isSlackEnabled(true)
+                    .build())
+            .build();
+    WholesaleAgent saumya =
+        WholesaleAgent.builder()
+            .name("Saumya")
+            .communicationIdentifiers(
+                CommunicationIdentifiers.builder()
+                    .emailId("saumya@gmail.com")
+                    .phoneNumber("879042556")
+                    .facebookMessengerId("saumya34")
+                    .isFacebookMessengerEnabled(true)
+                    .build())
+            .build();
 
     eventUpdatePublisher.subscribe(StockUpdateEvent.OUT_OF_STOCK_ITEM_AVAILABLE, rahul);
     eventUpdatePublisher.subscribe(StockUpdateEvent.OUT_OF_STOCK_ITEM_AVAILABLE, saumya);
@@ -66,26 +70,32 @@ public class ItemServiceTest {
     assertEquals("SMS sent to 9870098990.", smsNotifierLogCaptor.getInfoLogs().getFirst());
     assertEquals("Slack message sent to rahzex.", slackNotifierLogCaptor.getInfoLogs().getFirst());
     assertEquals("Mail sent to saumya@gmail.com.", emailNotifierLogCaptor.getInfoLogs().get(1));
-    assertEquals("Facebook messenger text sent to saumya34.", facebookMessengerLogCaptor.getInfoLogs().getFirst());
+    assertEquals(
+        "Facebook messenger text sent to saumya34.",
+        facebookMessengerLogCaptor.getInfoLogs().getFirst());
   }
 
   @Test
   public void testSoonToGoOutOfStockUpdates() {
-    Customer pamela = Customer.builder()
-        .name("Pamela")
-        .communicationIdentifiers(CommunicationIdentifiers.builder()
-            .emailId("pamela@gmail.com")
-            .phoneNumber("9856678990")
-            .isSmsEnabled(true)
-            .build())
-        .build();
-    WholesaleAgent anwesha = WholesaleAgent.builder()
-        .name("Anwesha")
-        .communicationIdentifiers(CommunicationIdentifiers.builder()
-            .emailId("anwesha@gmail.com")
-            .phoneNumber("9812345990")
-            .build())
-        .build();
+    Customer pamela =
+        Customer.builder()
+            .name("Pamela")
+            .communicationIdentifiers(
+                CommunicationIdentifiers.builder()
+                    .emailId("pamela@gmail.com")
+                    .phoneNumber("9856678990")
+                    .isSmsEnabled(true)
+                    .build())
+            .build();
+    WholesaleAgent anwesha =
+        WholesaleAgent.builder()
+            .name("Anwesha")
+            .communicationIdentifiers(
+                CommunicationIdentifiers.builder()
+                    .emailId("anwesha@gmail.com")
+                    .phoneNumber("9812345990")
+                    .build())
+            .build();
 
     eventUpdatePublisher.subscribe(StockUpdateEvent.ITEM_SOON_TO_GO_OUT_OF_STOCK, pamela);
     eventUpdatePublisher.subscribe(StockUpdateEvent.ITEM_SOON_TO_GO_OUT_OF_STOCK, anwesha);
@@ -99,22 +109,26 @@ public class ItemServiceTest {
 
   @Test
   public void testPriceIncreased() {
-    Customer pamela = Customer.builder()
-        .name("Pamela")
-        .communicationIdentifiers(CommunicationIdentifiers.builder()
-            .emailId("pamela@gmail.com")
-            .phoneNumber("9856678990")
-            .isSmsEnabled(true)
-            .build())
-        .build();
-    WholesaleAgent anwesha = WholesaleAgent.builder()
-        .name("Anwesha")
-        .communicationIdentifiers(CommunicationIdentifiers.builder()
-            .emailId("anwesha@gmail.com")
-            .phoneNumber("9812345990")
-            .isSmsEnabled(true)
-            .build())
-        .build();
+    Customer pamela =
+        Customer.builder()
+            .name("Pamela")
+            .communicationIdentifiers(
+                CommunicationIdentifiers.builder()
+                    .emailId("pamela@gmail.com")
+                    .phoneNumber("9856678990")
+                    .isSmsEnabled(true)
+                    .build())
+            .build();
+    WholesaleAgent anwesha =
+        WholesaleAgent.builder()
+            .name("Anwesha")
+            .communicationIdentifiers(
+                CommunicationIdentifiers.builder()
+                    .emailId("anwesha@gmail.com")
+                    .phoneNumber("9812345990")
+                    .isSmsEnabled(true)
+                    .build())
+            .build();
 
     eventUpdatePublisher.subscribe(PriceUpdateEvent.INCREASE_IN_PRICE, pamela);
     eventUpdatePublisher.subscribe(PriceUpdateEvent.INCREASE_IN_PRICE, anwesha);
@@ -129,22 +143,26 @@ public class ItemServiceTest {
 
   @Test
   public void testPriceDecreased() {
-    Customer pamela = Customer.builder()
-        .name("Pamela")
-        .communicationIdentifiers(CommunicationIdentifiers.builder()
-            .emailId("pamela@gmail.com")
-            .slackId("pamela")
-            .isSlackEnabled(true)
-            .build())
-        .build();
-    WholesaleAgent anwesha = WholesaleAgent.builder()
-        .name("Anwesha")
-        .communicationIdentifiers(CommunicationIdentifiers.builder()
-            .emailId("anwesha@gmail.com")
-            .phoneNumber("9812345990")
-            .isSmsEnabled(true)
-            .build())
-        .build();
+    Customer pamela =
+        Customer.builder()
+            .name("Pamela")
+            .communicationIdentifiers(
+                CommunicationIdentifiers.builder()
+                    .emailId("pamela@gmail.com")
+                    .slackId("pamela")
+                    .isSlackEnabled(true)
+                    .build())
+            .build();
+    WholesaleAgent anwesha =
+        WholesaleAgent.builder()
+            .name("Anwesha")
+            .communicationIdentifiers(
+                CommunicationIdentifiers.builder()
+                    .emailId("anwesha@gmail.com")
+                    .phoneNumber("9812345990")
+                    .isSmsEnabled(true)
+                    .build())
+            .build();
 
     eventUpdatePublisher.subscribe(PriceUpdateEvent.DECREASE_IN_PRICE, pamela);
     eventUpdatePublisher.subscribe(PriceUpdateEvent.DECREASE_IN_PRICE, anwesha);

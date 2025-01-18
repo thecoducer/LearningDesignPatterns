@@ -1,17 +1,17 @@
 package org.rahzex.observer.observable;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import org.rahzex.observer.entity.Settings;
 import org.rahzex.observer.event.SettingsEvent;
 import org.rahzex.observer.observers.SettingsEventSubscriber;
 import org.rahzex.observer.repository.DB;
 import org.thecoducer.inventorymanagementsystem.event.Event;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 public class SettingUpdatePublisher implements EventPublisher {
-  private final Map<Event, List<SettingsEventSubscriber>> eventSubscriberMap = DB.getEventSubscribers();
+  private final Map<Event, List<SettingsEventSubscriber>> eventSubscriberMap =
+      DB.getEventSubscribers();
 
   @Override
   public void subscribe(Event event, SettingsEventSubscriber eventSubscriber) {
@@ -20,10 +20,12 @@ public class SettingUpdatePublisher implements EventPublisher {
 
   @Override
   public void unsubscribe(Event event, SettingsEventSubscriber eventSubscriber) {
-    eventSubscriberMap.computeIfPresent(event, (_, eventSubscribers) -> {
-      eventSubscribers.remove(eventSubscriber);
-      return eventSubscribers.isEmpty() ? null : eventSubscribers;
-    });
+    eventSubscriberMap.computeIfPresent(
+        event,
+        (_, eventSubscribers) -> {
+          eventSubscribers.remove(eventSubscriber);
+          return eventSubscribers.isEmpty() ? null : eventSubscribers;
+        });
   }
 
   @Override
