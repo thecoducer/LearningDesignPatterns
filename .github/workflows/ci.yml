@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  statuses: write
+
 jobs:
   checks:
     runs-on: ubuntu-latest
