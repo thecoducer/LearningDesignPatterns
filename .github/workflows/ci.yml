@@ -5,15 +5,9 @@ on:
     branches:
       - main
 
-permissions:
-  checks: write
-  contents: write
-  statuses: write
-  pull-requests: write
-
 jobs:
-  format:
-    name: format # This name must match the required status check
+  formatter:
+    name: formatter
     runs-on: ubuntu-latest
 
     steps:
@@ -44,16 +38,7 @@ jobs:
           git push origin ${{ github.head_ref }}
         continue-on-error: true
 
-      - name: Report Status
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.checks.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              name: 'format',
-              head_sha: context.sha,
-              status: 'completed',
-              conclusion: 'success',
-            });
-
+      - name: Skip subsequent workflows on bot commits
+        run: |
+          git log -1 --pretty=format:'%an' | grep "github-actions[bot]" && exit 0 || exit 1
+        continue-on-error: true
