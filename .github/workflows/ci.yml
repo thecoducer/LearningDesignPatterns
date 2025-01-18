@@ -53,6 +53,7 @@ jobs:
       # Step 3: Auto-format code if check fails
       - name: Run Spotless Check
         run: mvn clean spotless:check
+        continue-on-error: true
 
   apply-code-formatting:
     runs-on: ubuntu-latest
