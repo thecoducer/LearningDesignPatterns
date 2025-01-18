@@ -58,5 +58,10 @@ jobs:
          git fetch origin
          git checkout ${{ github.head_ref }}
          git add .
-         git commit -m "Apply code formatting"
-         git push origin ${{ github.head_ref }}
+         # Check if there are any changes to commit
+         if [[ -n "$(git status --porcelain)" ]]; then
+          git commit -m "Apply code formatting"
+          git push origin ${{ github.head_ref }}
+         else
+          echo "No changes to commit."
+         fi
