@@ -1,17 +1,17 @@
 package org.thecoducer.inventorymanagementsystem.repository;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import lombok.Getter;
 import org.thecoducer.inventorymanagementsystem.entity.Item;
 import org.thecoducer.inventorymanagementsystem.event.Event;
 import org.thecoducer.inventorymanagementsystem.eventsubscriber.EventSubscriber;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class FakeDB {
   @Getter
   private static final Map<Event, List<EventSubscriber>> eventSubscriberMap = new HashMap<>();
+
   private static final Map<Integer, Item> itemMap = new HashMap<>();
 
   public static Map<Integer, Item> getItemMap() {
