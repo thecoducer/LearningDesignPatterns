@@ -80,12 +80,12 @@ jobs:
       - name: Commit and push changes
         if: ${{ github.event_name == 'pull_request' }}
         run: |
-          git fetch ${{ github.head_ref }}
+          git fetch origin ${{ github.head_ref }}
           git checkout ${{ github.head_ref }}
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Apply code formatting"
-          git push ${{ github.head_ref }}
+          git push origin ${{ github.head_ref }}
           git status
         continue-on-error: true
