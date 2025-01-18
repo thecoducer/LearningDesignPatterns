@@ -46,7 +46,6 @@ jobs:
 
   checks:
     name: checks # Explicitly define job name
-    needs: formatter
     runs-on: ubuntu-latest
 
     steps:
