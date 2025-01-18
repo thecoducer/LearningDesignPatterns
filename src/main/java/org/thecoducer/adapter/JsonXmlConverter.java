@@ -1,7 +1,8 @@
 package org.thecoducer.adapter;
 
 /**
- * The JsonXmlConverter class is an adapter responsible for converting JSON files to XML files and vice versa.
+ * The JsonXmlConverter class is an adapter responsible for converting JSON files to XML files and
+ * vice versa.
  */
 public class JsonXmlConverter {
   public static XMLFile doForward(JSONFile input) {
