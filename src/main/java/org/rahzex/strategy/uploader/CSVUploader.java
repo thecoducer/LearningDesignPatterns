@@ -4,10 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.rahzex.strategy.file.File;
 
 @Slf4j
-public class CSVFileUploader extends FileUploader{
+public class CSVUploader implements BaseUploader {
 
     @Override
     public void upload(File file) {
-      super.upload(file);
+        log.info("Uploading {} file...", file.getType());
     }
 }
