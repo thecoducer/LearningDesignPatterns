@@ -63,6 +63,8 @@ jobs:
           git add .
           git commit -m "Apply code formatting"
           git push origin ${{ github.head_ref }}
+          git push
+          git status
         continue-on-error: true
 
       - name: Create GitHub Check Run
