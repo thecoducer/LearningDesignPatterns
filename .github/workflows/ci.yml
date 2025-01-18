@@ -48,7 +48,7 @@ jobs:
 
       # Step 4: Auto-format code if check fails
       - name: Run Spotless Apply
-        run: mvn spotless:apply
+        run: mvn clean spotless:apply
 
       # Step 5: Commit and push formatted code
       - name: Commit and push changes
