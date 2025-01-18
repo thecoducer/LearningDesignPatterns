@@ -61,4 +61,5 @@ jobs:
           git add .
           git commit -m "Apply code formatting"
           git push origin ${{ github.head_ref }}
+          git checkout main
         continue-on-error: true
