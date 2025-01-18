@@ -13,6 +13,7 @@ public class FacebookMessengerNotifier extends NotifierDecorator {
   @Override
   public void send(CommunicationIdentifiers communicationIdentifiers) {
     super.send(communicationIdentifiers);
-    log.info("Facebook messenger text sent to {}.", communicationIdentifiers.getFacebookMessengerId());
+    log.info(
+        "Facebook messenger text sent to {}.", communicationIdentifiers.getFacebookMessengerId());
   }
 }
