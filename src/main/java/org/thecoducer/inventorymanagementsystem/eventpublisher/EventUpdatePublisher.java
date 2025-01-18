@@ -1,13 +1,14 @@
 package org.thecoducer.inventorymanagementsystem.eventpublisher;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.thecoducer.inventorymanagementsystem.event.Event;
 import org.thecoducer.inventorymanagementsystem.eventsubscriber.EventSubscriber;
 import org.thecoducer.inventorymanagementsystem.repository.FakeDB;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 public class EventUpdatePublisher implements EventPublisher {

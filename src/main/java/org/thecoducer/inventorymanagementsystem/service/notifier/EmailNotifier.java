@@ -3,7 +3,9 @@ package org.thecoducer.inventorymanagementsystem.service.notifier;
 import lombok.extern.slf4j.Slf4j;
 import org.thecoducer.inventorymanagementsystem.entity.CommunicationIdentifiers;
 
-/** Primary notifier */
+/**
+ * Primary notifier
+ */
 @Slf4j
 public class EmailNotifier implements Notifier {
 
