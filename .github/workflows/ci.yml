@@ -63,5 +63,5 @@ jobs:
           git checkout ${{ github.head_ref }}
           git add .
           git commit -m "Apply code formatting"
-          ggit push origin ${{ github.head_ref }}
+          git push origin ${{ github.head_ref }}
         continue-on-error: true
