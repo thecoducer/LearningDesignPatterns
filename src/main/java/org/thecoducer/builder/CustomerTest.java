@@ -1,8 +1,8 @@
 package org.thecoducer.builder;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 public class CustomerTest {
 
@@ -13,13 +13,14 @@ public class CustomerTest {
     String emailId = "mayukh@gmail.com";
     String phoneNumber = "1234567890";
     String website = "https://thecoducer.com";
-    Customer customer = Customer.builder()
-        .id(id)
-        .name(name)
-        .emailId(emailId)
-        .phoneNumber(phoneNumber)
-        .website(website)
-        .build();
+    Customer customer =
+        Customer.builder()
+            .id(id)
+            .name(name)
+            .emailId(emailId)
+            .phoneNumber(phoneNumber)
+            .website(website)
+            .build();
 
     assertEquals(id, customer.getId());
     assertEquals(name, customer.getName());
