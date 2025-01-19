@@ -7,5 +7,5 @@ import org.rahzex.strategy.enums.FileType;
 @Getter
 @SuperBuilder(toBuilder = true)
 public class File {
-    private FileType type;
+  private FileType type;
 }
