@@ -7,25 +7,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest {
-  private StockDataProcessor stockDataProcessor;
   private MetabaseService metabaseService;
-  private AnalyticsService analyticsService;
+  private PayloadAdapter payloadAdapter;
   private LogCaptor analyticsServiceLogCaptor;
 
   @BeforeEach
   public void setUp() {
-    stockDataProcessor = new StockDataProcessor();
     metabaseService = new MetabaseService();
-    analyticsService = new AnalyticsService();
+    payloadAdapter = new PayloadAdapter();
     analyticsServiceLogCaptor = LogCaptor.forClass(AnalyticsService.class);
   }
 
   @Test
   public void testDataAnalysis() {
     JSONFile jsonFile = metabaseService.getData();
-    XMLFile xmlFile = JsonXmlConverter.doForward(jsonFile);
-    XMLFile processedXMLFile = stockDataProcessor.processData(xmlFile);
-    analyticsService.doAnalysis(JsonXmlConverter.doBackward(processedXMLFile));
+    payloadAdapter.doAnalysis(payloadAdapter.processStockData(jsonFile));
     assertEquals(
         "Analysing... Sales_processed.json", analyticsServiceLogCaptor.getInfoLogs().getFirst());
   }
