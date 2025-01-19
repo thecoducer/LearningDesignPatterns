@@ -11,5 +11,6 @@ Design Patterns Implemented So Far:
   functionality.
     - Design of the Notifiers:
       ![](notifierdecoratordesign.png)
+* Facade Pattern: NotifierFacade provides an interface to the notifier system.
 
 Stay tuned for more patterns and features as the project evolves!
