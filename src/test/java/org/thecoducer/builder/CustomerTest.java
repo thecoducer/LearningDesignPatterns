@@ -2,10 +2,9 @@ package org.thecoducer.builder;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CustomerTest {
-
+class CustomerTest {
   @Test
   public void buildCustomer() {
     int id = 1;
