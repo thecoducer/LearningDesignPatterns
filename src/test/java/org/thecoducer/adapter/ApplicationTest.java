@@ -8,20 +8,26 @@ import org.junit.jupiter.api.Test;
 
 class ApplicationTest {
   private MetabaseService metabaseService;
-  private PayloadAdapter payloadAdapter;
+  private StockDataProcessorAdapter stockDataProcessorAdapter;
+  private AnalyticsServiceAdapter analyticsServiceAdapter;
   private LogCaptor analyticsServiceLogCaptor;
 
   @BeforeEach
   public void setUp() {
     metabaseService = new MetabaseService();
-    payloadAdapter = new PayloadAdapter();
+    stockDataProcessorAdapter = new StockDataProcessorAdapter();
+    analyticsServiceAdapter = new AnalyticsServiceAdapter();
     analyticsServiceLogCaptor = LogCaptor.forClass(AnalyticsService.class);
   }
 
   @Test
   public void testDataAnalysis() {
+    // Fetch the real data from Metabase
     JSONFile jsonFile = metabaseService.getData();
-    payloadAdapter.doAnalysis(payloadAdapter.processStockData(jsonFile));
+    // Process the data using StockDataProcessor and get the processed XML file
+    XMLFile processedFile = stockDataProcessorAdapter.processStockData(jsonFile);
+    // Perform analysis on the processed data
+    analyticsServiceAdapter.doAnalysis(processedFile);
     assertEquals(
         "Analysing... Sales_processed.json", analyticsServiceLogCaptor.getInfoLogs().getFirst());
   }
