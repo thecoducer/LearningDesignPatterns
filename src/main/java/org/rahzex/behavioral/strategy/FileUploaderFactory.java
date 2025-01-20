@@ -6,7 +6,6 @@ import org.rahzex.behavioral.strategy.uploader.CSVUploader;
 import org.rahzex.behavioral.strategy.uploader.JSONUploader;
 import org.rahzex.behavioral.strategy.uploader.PDFUploader;
 import org.rahzex.behavioral.strategy.uploader.XMLUploader;
-import org.rahzex.strategy.uploader.*;
 
 public class FileUploaderFactory {
 
