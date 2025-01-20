@@ -12,7 +12,8 @@ public class WeatherApplicationTest {
 
   @Test
   public void testWeatherApplication() {
-    GeoCoordinates geoCoordinates = GeoCoordinates.builder().longitude(28.6754).latitude(78.8327).build();
+    GeoCoordinates geoCoordinates =
+        GeoCoordinates.builder().longitude(28.6754).latitude(78.8327).build();
 
     WeatherApplication application = new WeatherApplication(new PrivateWeatherAPI());
     var weather = application.getWeather(geoCoordinates);
