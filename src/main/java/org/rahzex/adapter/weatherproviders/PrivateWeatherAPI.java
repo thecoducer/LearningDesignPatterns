@@ -1,7 +1,7 @@
-package org.rahzex.adapter.wetherproviders;
+package org.rahzex.adapter.weatherproviders;
 
 import lombok.extern.slf4j.Slf4j;
-import org.rahzex.adapter.dto.Location;
+import org.rahzex.adapter.dto.GeoCoordinates;
 
 /**
  * This API is a proprietary API that is only used by the indian weather application company, and
@@ -11,21 +11,21 @@ import org.rahzex.adapter.dto.Location;
 public class PrivateWeatherAPI implements WeatherService {
 
   /**
-   * @param location is X-Y coordinate
+   * @param geoCoordinates is X-Y coordinate
    * @return temperature in Celsius
    */
   @Override
-  public double getTemperature(Location location) {
+  public double getTemperature(GeoCoordinates geoCoordinates) {
     log.info("Obtaining temperature form PrivateWeatherAPI...");
     return 25;
   }
 
   /**
-   * @param location is X-Y coordinate separated by comma
+   * @param geoCoordinates is X-Y coordinate separated by comma
    * @return Humidity Percentage
    */
   @Override
-  public double getHumidity(Location location) {
+  public double getHumidity(GeoCoordinates geoCoordinates) {
     log.info("Obtaining humidity form PrivateWeatherAPI...");
     return 10;
   }

@@ -1,4 +1,4 @@
-package org.rahzex.adapter.wetherproviders;
+package org.rahzex.adapter.weatherproviders;
 
 /** WeatherStack is third party weather provider. */
 public class WeatherStackAPI {

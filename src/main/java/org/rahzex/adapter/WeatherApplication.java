@@ -1,8 +1,8 @@
 package org.rahzex.adapter;
 
-import org.rahzex.adapter.dto.Location;
+import org.rahzex.adapter.dto.GeoCoordinates;
 import org.rahzex.adapter.dto.WeatherData;
-import org.rahzex.adapter.wetherproviders.WeatherService;
+import org.rahzex.adapter.weatherproviders.WeatherService;
 
 public class WeatherApplication {
 
@@ -12,10 +12,10 @@ public class WeatherApplication {
     this.weatherService = weatherService;
   }
 
-  public WeatherData getWeather(Location location) {
+  public WeatherData getWeather(GeoCoordinates geoCoordinates) {
     return WeatherData.builder()
-        .temperature(weatherService.getTemperature(location))
-        .humidity(weatherService.getHumidity(location))
+        .temperature(weatherService.getTemperature(geoCoordinates))
+        .humidity(weatherService.getHumidity(geoCoordinates))
         .build();
   }
 }

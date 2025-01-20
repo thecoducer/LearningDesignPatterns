@@ -1,4 +1,4 @@
-package org.rahzex.adapter.wetherproviders;
+package org.rahzex.adapter.weatherproviders;
 
 /** OpenWeather is a third party weather provider. */
 public class OpenWeatherAPI {

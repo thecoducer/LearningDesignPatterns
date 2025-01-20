@@ -1,6 +1,6 @@
-package org.rahzex.adapter.wetherproviders;
+package org.rahzex.adapter.weatherproviders;
 
-import org.rahzex.adapter.dto.Location;
+import org.rahzex.adapter.dto.GeoCoordinates;
 
 /**
  * Weather Service defines basic contract which the weather application company will follow
@@ -8,7 +8,7 @@ import org.rahzex.adapter.dto.Location;
  * weather providers.
  */
 public interface WeatherService {
-  double getTemperature(Location location); // Temperature in Celsius
+  double getTemperature(GeoCoordinates geoCoordinates); // Temperature in Celsius
 
-  double getHumidity(Location location); // Humidity in percentage
+  double getHumidity(GeoCoordinates geoCoordinates); // Humidity in percentage
 }

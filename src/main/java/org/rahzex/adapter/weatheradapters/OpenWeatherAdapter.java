@@ -1,11 +1,11 @@
 package org.rahzex.adapter.weatheradapters;
 
 import lombok.extern.slf4j.Slf4j;
-import org.rahzex.adapter.converter.LocationConverter;
+import org.rahzex.adapter.converter.GeoCoordinatesConverter;
 import org.rahzex.adapter.converter.TemperatureConverter;
-import org.rahzex.adapter.dto.Location;
-import org.rahzex.adapter.wetherproviders.OpenWeatherAPI;
-import org.rahzex.adapter.wetherproviders.WeatherService;
+import org.rahzex.adapter.dto.GeoCoordinates;
+import org.rahzex.adapter.weatherproviders.OpenWeatherAPI;
+import org.rahzex.adapter.weatherproviders.WeatherService;
 
 /** Weather application can adapt to OpenWeatherAPI data using OpenWeatherAdapter */
 @Slf4j
@@ -17,16 +17,16 @@ public class OpenWeatherAdapter implements WeatherService {
   }
 
   @Override
-  public double getTemperature(Location location) {
+  public double getTemperature(GeoCoordinates geoCoordinates) {
     log.info("Obtaining temperature form OpenWeatherAPI...");
-    String city = LocationConverter.getCityFromLocation(location);
+    String city = GeoCoordinatesConverter.getCityFromCoordinates(geoCoordinates);
     return TemperatureConverter.convertToCelsius(openWeatherAPI.fetchTemperature(city));
   }
 
   @Override
-  public double getHumidity(Location location) {
+  public double getHumidity(GeoCoordinates geoCoordinates) {
     log.info("Obtaining humidity form OpenWeatherAPI...");
-    String city = LocationConverter.getCityFromLocation(location);
+    String city = GeoCoordinatesConverter.getCityFromCoordinates(geoCoordinates);
     return openWeatherAPI.fetchHumidity(city);
   }
 }
