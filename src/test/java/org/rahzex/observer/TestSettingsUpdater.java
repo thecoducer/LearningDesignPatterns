@@ -4,14 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.rahzex.observer.entity.FontSettings;
-import org.rahzex.observer.entity.ThemeSettings;
-import org.rahzex.observer.event.SettingsEvent;
-import org.rahzex.observer.observable.SettingUpdatePublisher;
-import org.rahzex.observer.observers.Header;
-import org.rahzex.observer.observers.TextPanel;
-import org.rahzex.observer.service.FontService;
-import org.rahzex.observer.service.ThemeService;
+import org.rahzex.behavioral.observer.entity.FontSettings;
+import org.rahzex.behavioral.observer.entity.ThemeSettings;
+import org.rahzex.behavioral.observer.event.SettingsEvent;
+import org.rahzex.behavioral.observer.observable.SettingUpdatePublisher;
+import org.rahzex.behavioral.observer.observers.Header;
+import org.rahzex.behavioral.observer.observers.TextPanel;
+import org.rahzex.behavioral.observer.service.FontService;
+import org.rahzex.behavioral.observer.service.ThemeService;
 
 public class TestSettingsUpdater {
   private FontService fontService;

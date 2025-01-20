@@ -7,17 +7,17 @@ import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.rahzex.strategy.enums.FileType;
-import org.rahzex.strategy.file.CSVFile;
-import org.rahzex.strategy.file.File;
-import org.rahzex.strategy.file.JSONFile;
-import org.rahzex.strategy.file.PDFFile;
-import org.rahzex.strategy.file.XMLFile;
-import org.rahzex.strategy.uploader.CSVUploader;
-import org.rahzex.strategy.uploader.FileUploader;
-import org.rahzex.strategy.uploader.JSONUploader;
-import org.rahzex.strategy.uploader.PDFUploader;
-import org.rahzex.strategy.uploader.XMLUploader;
+import org.rahzex.behavioral.strategy.enums.FileType;
+import org.rahzex.behavioral.strategy.file.CSVFile;
+import org.rahzex.behavioral.strategy.file.File;
+import org.rahzex.behavioral.strategy.file.JSONFile;
+import org.rahzex.behavioral.strategy.file.PDFFile;
+import org.rahzex.behavioral.strategy.file.XMLFile;
+import org.rahzex.behavioral.strategy.uploader.CSVUploader;
+import org.rahzex.behavioral.strategy.uploader.FileUploader;
+import org.rahzex.behavioral.strategy.uploader.JSONUploader;
+import org.rahzex.behavioral.strategy.uploader.PDFUploader;
+import org.rahzex.behavioral.strategy.uploader.XMLUploader;
 
 public class FileUploaderTest {
   private final LogCaptor XMLLogCaptor = LogCaptor.forClass(XMLUploader.class);
