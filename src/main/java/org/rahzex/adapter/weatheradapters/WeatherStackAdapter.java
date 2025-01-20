@@ -10,7 +10,7 @@ import org.rahzex.adapter.weatherproviders.WeatherStackAPI;
 /** Weather application can adapt to WeatherStackAPI data using WeatherStackAdapter */
 @Slf4j
 public class WeatherStackAdapter implements WeatherService {
-  private WeatherStackAPI weatherStackAPI;
+  private final WeatherStackAPI weatherStackAPI;
 
   public WeatherStackAdapter() {
     this.weatherStackAPI = new WeatherStackAPI();
@@ -18,14 +18,14 @@ public class WeatherStackAdapter implements WeatherService {
 
   @Override
   public double getTemperature(GeoCoordinates geoCoordinates) {
-    log.info("Obtaining temperature form WeatherStackAPI...");
+    log.info("Obtaining temperature from WeatherStackAPI...");
     String place = GeoCoordinatesConverter.getPlaceFromCoordinates(geoCoordinates);
     return TemperatureConverter.convertToCelsius(weatherStackAPI.getCurrentTemp(place));
   }
 
   @Override
   public double getHumidity(GeoCoordinates geoCoordinates) {
-    log.info("Obtaining humidity form WeatherStackAPI...");
+    log.info("Obtaining humidity from WeatherStackAPI...");
     String place = GeoCoordinatesConverter.getPlaceFromCoordinates(geoCoordinates);
     return weatherStackAPI.getCurrentHumidity(place);
   }
