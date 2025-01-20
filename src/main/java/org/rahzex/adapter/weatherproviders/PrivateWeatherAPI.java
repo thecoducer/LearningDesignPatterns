@@ -16,17 +16,17 @@ public class PrivateWeatherAPI implements WeatherService {
    */
   @Override
   public double getTemperature(GeoCoordinates geoCoordinates) {
-    log.info("Obtaining temperature form PrivateWeatherAPI...");
+    log.info("Obtaining temperature from PrivateWeatherAPI...");
     return 25;
   }
 
   /**
-   * @param geoCoordinates is X-Y coordinate separated by comma
+   * @param geoCoordinates is X-Y coordinate
    * @return Humidity Percentage
    */
   @Override
   public double getHumidity(GeoCoordinates geoCoordinates) {
-    log.info("Obtaining humidity form PrivateWeatherAPI...");
+    log.info("Obtaining humidity from PrivateWeatherAPI...");
     return 10;
   }
 }

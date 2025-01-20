@@ -18,14 +18,14 @@ public class OpenWeatherAdapter implements WeatherService {
 
   @Override
   public double getTemperature(GeoCoordinates geoCoordinates) {
-    log.info("Obtaining temperature form OpenWeatherAPI...");
+    log.info("Obtaining temperature from OpenWeatherAPI...");
     String city = GeoCoordinatesConverter.getCityFromCoordinates(geoCoordinates);
     return TemperatureConverter.convertToCelsius(openWeatherAPI.fetchTemperature(city));
   }
 
   @Override
   public double getHumidity(GeoCoordinates geoCoordinates) {
-    log.info("Obtaining humidity form OpenWeatherAPI...");
+    log.info("Obtaining humidity from OpenWeatherAPI...");
     String city = GeoCoordinatesConverter.getCityFromCoordinates(geoCoordinates);
     return openWeatherAPI.fetchHumidity(city);
   }
