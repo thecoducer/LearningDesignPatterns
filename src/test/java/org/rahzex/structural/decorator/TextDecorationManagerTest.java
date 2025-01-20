@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.rahzex.structural.decorator.TextDecorationManager;
-import org.rahzex.structural.decorator.TextDecorationPreferences;
 
 public class TextDecorationManagerTest {
   private TextDecorationManager textDecorationManager;

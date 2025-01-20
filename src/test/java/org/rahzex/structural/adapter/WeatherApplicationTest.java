@@ -3,7 +3,6 @@ package org.rahzex.structural.adapter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
-import org.rahzex.structural.adapter.WeatherApplication;
 import org.rahzex.structural.adapter.dto.GeoCoordinates;
 import org.rahzex.structural.adapter.weatheradapters.OpenWeatherAdapter;
 import org.rahzex.structural.adapter.weatheradapters.WeatherStackAdapter;
