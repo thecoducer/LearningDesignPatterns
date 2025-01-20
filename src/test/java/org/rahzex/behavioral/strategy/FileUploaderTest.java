@@ -1,4 +1,4 @@
-package org.rahzex.strategy;
+package org.rahzex.behavioral.strategy;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

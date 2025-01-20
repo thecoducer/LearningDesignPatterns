@@ -1,4 +1,4 @@
-package org.rahzex.decorator;
+package org.rahzex.structural.decorator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,4 +1,4 @@
-package org.rahzex.observer;
+package org.rahzex.behavioral.observer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

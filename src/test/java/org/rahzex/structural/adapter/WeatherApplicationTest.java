@@ -1,4 +1,4 @@
-package org.rahzex.adapter;
+package org.rahzex.structural.adapter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
