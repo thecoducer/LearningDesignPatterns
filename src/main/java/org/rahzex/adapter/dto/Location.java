@@ -4,6 +4,6 @@ import lombok.Builder;
 
 @Builder
 public class Location {
-    private double xCoordinate;
-    private double yCoordinate;
+  private double xCoordinate;
+  private double yCoordinate;
 }

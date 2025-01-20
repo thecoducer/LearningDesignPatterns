@@ -6,6 +6,6 @@ import lombok.Getter;
 @Builder
 @Getter
 public class WeatherData {
-    private double temperature;
-    private double humidity;
+  private double temperature;
+  private double humidity;
 }

@@ -6,16 +6,16 @@ import org.rahzex.adapter.wetherproviders.WeatherService;
 
 public class WeatherApplication {
 
-    private final WeatherService weatherService;
+  private final WeatherService weatherService;
 
-    public WeatherApplication(WeatherService weatherService) {
-        this.weatherService = weatherService;
-    }
+  public WeatherApplication(WeatherService weatherService) {
+    this.weatherService = weatherService;
+  }
 
-    public WeatherData getWeather(Location location) {
-        return WeatherData.builder()
-                .temperature(weatherService.getTemperature(location))
-                .humidity(weatherService.getHumidity(location))
-                .build();
-    }
+  public WeatherData getWeather(Location location) {
+    return WeatherData.builder()
+        .temperature(weatherService.getTemperature(location))
+        .humidity(weatherService.getHumidity(location))
+        .build();
+  }
 }
