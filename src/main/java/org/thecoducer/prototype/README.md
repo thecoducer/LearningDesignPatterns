@@ -1,7 +1,5 @@
 # Prototype
 
----
-
 - **Creational Design Pattern**
 - Prototype is fundamentally about creating a new object by copying an existing one.
 - Prototype is useful when creating a copy instance of a class is resource-intensive or complicated.
