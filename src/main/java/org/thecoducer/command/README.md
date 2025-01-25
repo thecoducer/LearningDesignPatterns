@@ -5,8 +5,14 @@
 
 ## Intent
 
-The Command Pattern helps decouple the invoker (the object that makes the request) from the receiver (the object that performs the action). It is particularly useful when you need to:
+The Command Pattern helps decouple the **invoker** (the object that makes the request) from the **receiver** (the object that performs the action). It is particularly useful when you need to:
+- Encapsulate requests or actions as objects.
+- Support undo/redo operations.
+- Allow requests to be queued, logged, or executed at different times.
 
-Encapsulate requests or actions as objects.
-Support undo/redo operations.
-Allow requests to be queued, logged, or executed at different times.
+## Structure
+```
+Client --> Invoker ---> Command Interface --> ConcreteCommand --> Receiver
+```
+
+
