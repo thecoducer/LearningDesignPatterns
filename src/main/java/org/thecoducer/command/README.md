@@ -2,6 +2,9 @@
 
 - **Behavioral Design Pattern**
 - It encapsulates a request as an object, allowing you to parameterize objects with different requests, delay or queue a request, and support undoable operations.
+- For example:
+  - A GUI framework without the Command Pattern might require subclasses of buttons for each action (`SaveButton`, `PrintButton`, `UndoButton`).
+  - With the Command Pattern, a generic Button class can accept any command, avoiding subclass proliferation for the invoker.
 
 ## Intent
 
@@ -15,4 +18,5 @@ The Command Pattern helps decouple the **invoker** (the object that makes the re
 Client --> Invoker ---> Command Interface --> ConcreteCommand --> Receiver
 ```
 
+## 
 
