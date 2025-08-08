@@ -4,42 +4,64 @@ import lombok.Getter;
 
 @Getter
 public class Customer {
-  private int id;
-  private String name;
-  private String emailId;
-  private String phoneNumber;
-  private String website;
+  private final int id;
+  private final String name;
+  private final String emailId;
+  private final String phoneNumber;
+  private final String website;
 
-  public static Customer builder() {
-    return new Customer();
+  private Customer(Builder builder) {
+    this.id = builder.id;
+    this.name = builder.name;
+    this.emailId = builder.emailId;
+    this.phoneNumber = builder.phoneNumber;
+    this.website = builder.website;
   }
 
-  public Customer id(int id) {
-    this.id = id;
-    return this;
+  public static Builder builder() {
+    return new Builder();
   }
 
-  public Customer name(String name) {
-    this.name = name;
-    return this;
-  }
+  public static class Builder {
+    private int id;
+    private String name;
+    private String emailId;
+    private String phoneNumber;
+    private String website;
 
-  public Customer emailId(String emailId) {
-    this.emailId = emailId;
-    return this;
-  }
+    public Builder id(int id) {
+      this.id = id;
+      return this;
+    }
 
-  public Customer phoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
-    return this;
-  }
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
 
-  public Customer website(String website) {
-    this.website = website;
-    return this;
-  }
+    public Builder emailId(String emailId) {
+      this.emailId = emailId;
+      return this;
+    }
 
-  public Customer build() {
-    return this;
+    public Builder phoneNumber(String phoneNumber) {
+      this.phoneNumber = phoneNumber;
+      return this;
+    }
+
+    public Builder website(String website) {
+      this.website = website;
+      return this;
+    }
+
+    public Customer build() {
+      // validations
+      if (id <= 0) {
+        throw new IllegalArgumentException("Id is required.");
+      } else if (name == null || name.isBlank()) {
+        throw new IllegalArgumentException("Name is required.");
+      }
+      return new Customer(this);
+    }
   }
 }

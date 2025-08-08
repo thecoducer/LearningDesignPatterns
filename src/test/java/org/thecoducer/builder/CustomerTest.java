@@ -5,28 +5,43 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class CustomerTest {
+class CustomerTest {
 
   @Test
-  public void buildCustomer() {
+  void buildCustomer_success() {
     int id = 1;
     String name = "Mayukh Datta";
     String emailId = "mayukh@gmail.com";
     String phoneNumber = "1234567890";
-    String website = "https://thecoducer.com";
     Customer customer =
-        Customer.builder()
-            .id(id)
-            .name(name)
-            .emailId(emailId)
-            .phoneNumber(phoneNumber)
-            .website(website)
-            .build();
+        Customer.builder().id(id).name(name).emailId(emailId).phoneNumber(phoneNumber).build();
 
     assertEquals(id, customer.getId());
     assertEquals(name, customer.getName());
     assertEquals(emailId, customer.getEmailId());
     assertEquals(phoneNumber, customer.getPhoneNumber());
-    assertEquals(website, customer.getWebsite());
+    assertNull(customer.getWebsite());
+  }
+
+  @Test
+  void customerWithInvalidId() {
+    Exception exception =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              Customer.builder().name("Mayukh").build();
+            });
+    assertEquals("Id is required.", exception.getMessage());
+  }
+
+  @Test
+  void customerWithBlankName() {
+    Exception exception =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              Customer.builder().id(2134).build();
+            });
+    assertEquals("Name is required.", exception.getMessage());
   }
 }
