@@ -1,4 +1,4 @@
-package org.thecoducer.lrucache;
+package org.thecoducer.cache;
 
 public interface Cache<K, V> {
   V get(K key);

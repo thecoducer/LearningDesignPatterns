@@ -1,4 +1,4 @@
-package org.thecoducer.lrucache;
+package org.thecoducer.cache;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,10 +7,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ThreadSafeLRUCacheUsingCustomDataStructures<K, V> implements Cache<K, V> {
 
-  class Node<K, V> {
-    public K key;
-    public V value;
-    public Node<K, V> prev, next;
+  static class Node<K, V> {
+    K key;
+    V value;
+    Node<K, V> prev;
+    Node<K, V> next;
 
     public Node(K key, V value) {
       this.key = key;
@@ -20,8 +21,8 @@ public class ThreadSafeLRUCacheUsingCustomDataStructures<K, V> implements Cache<
 
   private final int capacity;
   private final Map<K, Node<K, V>> lruCache;
-  private Node<K, V> head;
-  private Node<K, V> tail;
+  private final Node<K, V> head;
+  private final Node<K, V> tail;
 
   private final Lock lock = new ReentrantLock();
 
@@ -56,14 +57,13 @@ public class ThreadSafeLRUCacheUsingCustomDataStructures<K, V> implements Cache<
       checkNullValue(value);
 
       if (lruCache.containsKey(key)) {
-        Node node = lruCache.get(key);
+        Node<K, V> node = lruCache.get(key);
         node.value = value;
-        lruCache.put(key, node);
         moveToHead(node);
       } else {
         if (lruCache.size() >= capacity) {
           lruCache.remove(tail.prev.key);
-          removeNode(tail.prev);
+          remove(tail.prev);
         }
         Node newNode = new Node(key, value);
         addToHead(newNode);
@@ -82,7 +82,7 @@ public class ThreadSafeLRUCacheUsingCustomDataStructures<K, V> implements Cache<
       if (lruCache.containsKey(key)) {
         Node node = lruCache.get(key);
         lruCache.remove(key);
-        removeNode(node);
+        remove(node);
       }
     } finally {
       lock.unlock();
@@ -90,11 +90,11 @@ public class ThreadSafeLRUCacheUsingCustomDataStructures<K, V> implements Cache<
   }
 
   private void moveToHead(Node<K, V> node) {
-    removeNode(node);
+    remove(node);
     addToHead(node);
   }
 
-  private void removeNode(Node<K, V> node) {
+  private void remove(Node<K, V> node) {
     node.next.prev = node.prev;
     node.prev.next = node.next;
   }
