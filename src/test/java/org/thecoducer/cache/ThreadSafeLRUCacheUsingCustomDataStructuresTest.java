@@ -1,4 +1,4 @@
-package org.thecoducer.lrucache;
+package org.thecoducer.cache;
 
 import static org.junit.jupiter.api.Assertions.*;
 

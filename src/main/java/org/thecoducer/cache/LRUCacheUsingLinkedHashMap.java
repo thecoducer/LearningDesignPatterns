@@ -1,4 +1,4 @@
-package org.thecoducer.lrucache;
+package org.thecoducer.cache;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
