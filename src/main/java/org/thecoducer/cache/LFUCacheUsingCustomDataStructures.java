@@ -77,7 +77,6 @@ public class LFUCacheUsingCustomDataStructures<K, V> implements Cache<K, V> {
     if (lfuCache.containsKey(key)) {
       Node node = lfuCache.get(key);
       node.value = value;
-      lfuCache.put(key, node);
 
       updateFrequencyAndLRUOrder(node);
       return;
