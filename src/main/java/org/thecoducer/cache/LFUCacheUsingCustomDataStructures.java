@@ -32,11 +32,6 @@ public class LFUCacheUsingCustomDataStructures<K, V> implements Cache<K, V> {
       this.size = 0;
     }
 
-    public void moveToHead(Node<K, V> node) {
-      remove(node);
-      addToHead(node);
-    }
-
     public void addToHead(Node<K, V> node) {
       head.next.prev = node;
       node.next = head.next;
